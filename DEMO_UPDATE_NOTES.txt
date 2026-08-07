@@ -1,0 +1,15 @@
+Forge Compliance website - Engineering Demo homepage update
+
+Changes:
+- Added Demo to the main desktop/mobile navigation.
+- Added 'Explore engineering platform' to the homepage hero.
+- Added a full Engineering Operations Platform showcase section to the homepage.
+- Added an Interactive Demo link to the footer.
+- Added /demo/index.html containing the fictional public Forge Engineering demo.
+- Existing site pages, branding, document shop and service content remain unchanged.
+
+Recommended live demo URL:
+https://forgecompliance.co.uk/demo/
+
+Upload:
+This ZIP contains the COMPLETE updated Forge Compliance site.
