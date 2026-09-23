@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Forge Compliance | Engineering Operations Demo</title>
-<meta name="description" content="Interactive demonstration of the Forge Compliance engineering operations platform.">
+<title>Forge Compliance | Custom Compliance Software Demo</title>
+<meta name="description" content="Interactive example of custom compliance software built by Forge Compliance around real operational workflows.">
 <meta name="theme-color" content="#17372c">
 <style>
 :root{
@@ -46,13 +46,13 @@ a{color:inherit}
 </head>
 <body>
 <header class="topbar"><div class="topbarInner">
-  <div class="brand"><div class="mark">FC</div><div><h1>Forge Compliance</h1><small>Engineering Operations Platform <span class="forge">Interactive Demo</span></small></div></div>
-  <nav class="nav"><a href="../index.html">Website</a><button class="cta" onclick="openContact()">Request a Demo</button></nav>
+  <div class="brand"><div class="mark">FC</div><div><h1>Forge Compliance</h1><small>Custom Compliance Software <span class="forge">Interactive Example</span></small></div></div>
+  <nav class="nav"><a href="../index.html">Website</a><button class="cta" onclick="openContact()">Talk to Forge</button></nav>
 </div></header>
 
 <div class="layout">
 <aside class="sidebar">
-  <h3>Demo Modules</h3>
+  <h3>Example Modules</h3>
   <button class="active" data-view="dashboard">🏠 Overview</button>
   <button data-view="plant">🏭 Plant Rooms</button>
   <button data-view="assets">📋 Assets</button>
@@ -66,14 +66,15 @@ a{color:inherit}
 
 <main class="main">
 <section id="dashboard" class="view active">
-  <section class="hero"><div><span class="eyebrow">ENGINEERING CONTROL CENTRE</span><h2>One connected engineering process</h2><p>Assets, live data, maintenance, contractors, approvals, compliance and cost control in one operational workflow.</p></div><span class="heroBadge">DEMO DATA</span></section>
+  <section class="hero"><div><span class="eyebrow">CUSTOM COMPLIANCE SOFTWARE · EXAMPLE BUILD</span><h2>Built around the way your operation works</h2><p>This interactive demo shows one example of a Forge-built system. The real product is shaped around your sites, assets, workflows, responsibilities and budget, rather than forcing your business into a fixed off-the-shelf platform.</p></div><span class="heroBadge">FICTIONAL DEMO DATA</span></section>
+  <div class="notice"><b>This is an example, not a fixed package.</b> Forge Compliance can build a lighter, simpler or more detailed system around the parts of your operation that actually need managing. You pay for the workflow you need, not a catalogue of features you will never use.</div>
   <section class="stats">
     <article class="stat"><span>Estate Compliance</span><b>97%</b></article>
     <article class="stat"><span>Open Issues</span><b>17</b></article>
     <article class="stat"><span>Overdue PPM</span><b>4</b></article>
     <article class="stat"><span>Committed Spend</span><b>£62k</b></article>
   </section>
-  <div class="sectionHead"><h3>Quick actions</h3><span>Common engineering tasks</span></div>
+  <div class="sectionHead"><h3>Quick actions</h3><span>Common engineering tasks in this example build</span></div>
   <section class="quickGrid">
     <button onclick="show('plant')"><span>🏭</span><b>Plant Rooms</b><small>Open digital engineering hubs</small></button>
     <button onclick="show('assets')"><span>📋</span><b>Asset Register</b><small>Browse equipment and history</small></button>
@@ -192,7 +193,7 @@ a{color:inherit}
 </main>
 </div>
 
-<footer class="footer">Forge Compliance · Engineering Operations Platform Demo · All estate, contractor, cost and asset data shown here is fictional.</footer>
+<footer class="footer">Forge Compliance · Custom Compliance Software · This is one configurable example build. All estate, contractor, cost and asset data shown here is fictional.</footer>
 
 <div id="assetModal" class="modal"><div class="modalCard"><div class="modalHead"><div><span class="eyebrow">ASSET LIFECYCLE</span><h2>P-MEC-01 · Main Heating Pump</h2></div><button class="close" onclick="closeModal('assetModal')">×</button></div>
 <div class="meta"><span class="pill red">Current fault</span><span class="pill">Criticality: High</span><span class="pill">Main Energy Centre</span></div>
@@ -205,10 +206,11 @@ a{color:inherit}
 </div>
 </div></div>
 
-<div id="contactModal" class="modal"><div class="modalCard"><div class="modalHead"><div><span class="eyebrow">FORGE COMPLIANCE</span><h2>Request a live demonstration</h2></div><button class="close" onclick="closeModal('contactModal')">×</button></div>
-<p>This public demo uses fictional data. A live demonstration can be tailored to your estate, engineering workflows and compliance requirements.</p>
-<div class="formGrid"><label>Name<input placeholder="Your name"></label><label>Organisation<input placeholder="Organisation"></label><label>Email<input type="email" placeholder="you@example.com"></label><label>Phone<input placeholder="Optional"></label><label class="wide">What would you like to see?<textarea rows="4" placeholder="Asset management, PPM, compliance, maintenance, contractors, costs..."></textarea></label></div>
-<div class="cardActions"><button class="btn primary" onclick="alert('Demo form only — connect this to your website enquiry form before launch.')">Request Demo</button></div>
+<div id="contactModal" class="modal"><div class="modalCard"><div class="modalHead"><div><span class="eyebrow">FORGE COMPLIANCE</span><h2>Build a system around your operation</h2></div><button class="close" onclick="closeModal('contactModal')">×</button></div>
+<p>This public demo is one fictional example. Your Forge system can be built around your own sites, assets, compliance tasks, teams and approval processes, with only the features your operation actually needs.</p>
+<div class="notice"><b>Custom does not have to mean expensive.</b> The aim is a practical system that fits the business, rather than an oversized platform that makes the business fit the software.</div>
+<div class="formGrid"><label>Name<input placeholder="Your name"></label><label>Organisation<input placeholder="Organisation"></label><label>Email<input type="email" placeholder="you@example.com"></label><label>Phone<input placeholder="Optional"></label><label class="wide">What would you like to manage?<textarea rows="4" placeholder="Compliance, assets, inspections, PPM, maintenance, contractors, evidence, actions..."></textarea></label></div>
+<div class="cardActions"><button class="btn primary" onclick="window.location.href='../contact.html'">Talk to Forge</button></div>
 </div></div>
 
 <script>
