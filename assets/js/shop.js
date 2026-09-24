@@ -1,14 +1,19 @@
-/*
-  Add your Stripe Payment Link URLs below.
-  Example: 'https://buy.stripe.com/your-payment-link'
-*/
+/* Forge Compliance document shop payment links.
+   Each product gets its own Stripe Payment Link so the purchased document
+   can be identified reliably for secure delivery. */
 const paymentLinks = {
-  'pool-backwash-sop': '',
-  'pool-backwash-rams': '',
+  'pool-backwash-sop': 'https://buy.stripe.com/6oU5kC9f9e6u3jNePAf3a00',
+  'weekly-fire-alarm-sop': '',
   'working-height-ra': '',
-  'hypochlorite-coshh': '',
-  'prv-valve-rams': '',
-  'hotel-ppm-pack': ''
+  'lone-working-ra': '',
+  'pump-replacement-rams': '',
+  'ceiling-access-rams': '',
+  'cleaning-chemical-coshh': '',
+  'pool-chemical-coshh': '',
+  'plant-room-daily-log': '',
+  'water-temperature-log': '',
+  'maintenance-asset-register': '',
+  'contractor-compliance-register': ''
 };
 
 const toast = document.querySelector('#shop-toast');
@@ -29,7 +34,7 @@ document.querySelectorAll('.buy-button').forEach(button => {
   } else {
     button.addEventListener('click', event => {
       event.preventDefault();
-      showToast('Secure checkout is being connected. Please use the bespoke quote form for this document today.');
+      showToast('Secure checkout for this template is being connected now. Please check back shortly or contact Forge Compliance.');
     });
   }
 });
