@@ -4,7 +4,7 @@
 const paymentLinks = {
   'pool-backwash-sop': 'https://buy.stripe.com/6oU5kC9f9e6u3jNePAf3a00',
   'weekly-fire-alarm-sop': 'https://buy.stripe.com/7sYdR82QLgeC6vZ6j4f3a01',
-  'working-height-ra': '',
+  'working-height-ra': 'https://buy.stripe.com/6oUdR89f93rQ7A34aWf3a02',
   'lone-working-ra': '',
   'pump-replacement-rams': '',
   'ceiling-access-rams': '',
