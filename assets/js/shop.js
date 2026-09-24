@@ -39,12 +39,40 @@ document.querySelectorAll('.buy-button').forEach(button => {
   }
 });
 
-const filter = document.querySelector('#shop-filter');
-if (filter) {
-  filter.addEventListener('change', () => {
-    const value = filter.value;
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.hidden = value !== 'all' && card.dataset.category !== value;
-    });
+const typeFilter = document.querySelector('#shop-filter');
+const sectorFilter = document.querySelector('#sector-filter');
+const searchInput = document.querySelector('#shop-search');
+const resultCount = document.querySelector('#shop-result-count');
+const productCards = Array.from(document.querySelectorAll('.product-card'));
+
+const normalise = value => (value || '').toLowerCase().trim();
+
+const applyShopFilters = () => {
+  const typeValue = typeFilter?.value || 'all';
+  const sectorValue = sectorFilter?.value || 'all';
+  const searchValue = normalise(searchInput?.value);
+  let visible = 0;
+
+  productCards.forEach(card => {
+    const matchesType = typeValue === 'all' || card.dataset.category === typeValue;
+    const sectors = normalise(card.dataset.sector).split(/\s+/).filter(Boolean);
+    const matchesSector = sectorValue === 'all' || sectors.includes(sectorValue);
+    const searchableText = normalise(card.textContent);
+    const matchesSearch = !searchValue || searchableText.includes(searchValue);
+    const show = matchesType && matchesSector && matchesSearch;
+
+    card.hidden = !show;
+    if (show) visible += 1;
   });
-}
+
+  if (resultCount) {
+    resultCount.textContent = `${visible} ${visible === 1 ? 'document' : 'documents'} found`;
+  }
+};
+
+[typeFilter, sectorFilter].forEach(control => {
+  control?.addEventListener('change', applyShopFilters);
+});
+searchInput?.addEventListener('input', applyShopFilters);
+
+applyShopFilters();
