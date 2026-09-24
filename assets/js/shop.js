@@ -9,7 +9,7 @@ const paymentLinks = {
   'pump-replacement-rams': 'https://buy.stripe.com/6oU8wO4YTe6u7A39vgf3a04',
   'ceiling-access-rams': 'https://buy.stripe.com/fZu4gy62X4vUg6z5f0f3a05',
   'cleaning-chemical-coshh': 'https://buy.stripe.com/aFa6oGgHB6E24nR8rcf3a06',
-  'pool-chemical-coshh': '',
+  'pool-chemical-coshh': 'https://buy.stripe.com/fZu3cu2QLgeC5rV5f0f3a07',
   'plant-room-daily-log': '',
   'water-temperature-log': '',
   'maintenance-asset-register': '',
