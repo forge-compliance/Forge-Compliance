@@ -6,7 +6,7 @@ const paymentLinks = {
   'weekly-fire-alarm-sop': 'https://buy.stripe.com/7sYdR82QLgeC6vZ6j4f3a01',
   'working-height-ra': 'https://buy.stripe.com/6oUdR89f93rQ7A34aWf3a02',
   'lone-working-ra': 'https://buy.stripe.com/9B64gy1MH2nMdYr6j4f3a03',
-  'pump-replacement-rams': '',
+  'pump-replacement-rams': 'https://buy.stripe.com/6oU8wO4YTe6u7A39vgf3a04',
   'ceiling-access-rams': '',
   'cleaning-chemical-coshh': '',
   'pool-chemical-coshh': '',
