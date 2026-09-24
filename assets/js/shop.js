@@ -12,7 +12,7 @@ const paymentLinks = {
   'pool-chemical-coshh': 'https://buy.stripe.com/fZu3cu2QLgeC5rV5f0f3a07',
   'plant-room-daily-log': 'https://buy.stripe.com/8x29ASdvp9Qe1bFePAf3a08',
   'water-temperature-log': 'https://buy.stripe.com/9B68wO4YT4vUcUnbDof3a09',
-  'maintenance-asset-register': '',
+  'maintenance-asset-register': 'https://buy.stripe.com/00w6oG4YT4vU3jNcHsf3a0a',
   'contractor-compliance-register': ''
 };
 
