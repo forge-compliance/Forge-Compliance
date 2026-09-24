@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Purchase Complete | Forge Compliance</title>
+  <meta name="description" content="Forge Compliance purchase confirmation and email preferences.">
+  <link rel="icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css?v=shop2">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="container"><span>UK-wide maintenance and compliance documentation</span><span>hello@forgecompliance.co.uk</span></div></div>
+<header class="site-header"><div class="container header-inner"><a href="index.html"><img class="logo" src="assets/images/forge-logo.png" alt="Forge Compliance"></a><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="documents.html">Shop</a><a href="contact.html">Contact</a></nav></div></header>
+<main id="main">
+<section class="page-hero"><div class="container" style="max-width:760px"><span class="eyebrow">Purchase complete</span><h1>Thanks for your order.</h1><p class="prose">Your payment has been handled securely by Stripe. We’ll use your purchase details to fulfil the order and maintain your customer record.</p></div></section>
+<section class="section"><div class="container" style="max-width:760px">
+  <div class="shop-note" style="display:block">
+    <span class="eyebrow">Email preferences</span>
+    <h2>Prefer not to receive product news and offers?</h2>
+    <p>Enter the same email address you used at checkout. We’ll record that you do not want marketing emails. Purchase receipts, order fulfilment and other service messages are unaffected.</p>
+    <form id="optout-form" style="margin-top:1.5rem">
+      <label for="email"><strong>Checkout email</strong></label>
+      <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" style="display:block;width:100%;max-width:520px;margin:.5rem 0 1rem;padding:.9rem;border:1px solid #cbd5e1;border-radius:8px">
+      <button class="btn btn-secondary" type="submit">No marketing emails</button>
+      <p id="preference-status" role="status" aria-live="polite" style="margin-top:1rem"></p>
+    </form>
+    <p style="margin-top:1rem"><small>You can also contact <a href="mailto:hello@forgecompliance.co.uk">hello@forgecompliance.co.uk</a> at any time to change your preference.</small></p>
+  </div>
+  <p style="margin-top:2rem"><a class="btn btn-primary" href="documents.html">Return to document shop</a></p>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
+<script src="assets/js/script.js?v=shop2"></script>
+<script>
+const form = document.getElementById('optout-form');
+const statusEl = document.getElementById('preference-status');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  statusEl.textContent = 'Saving your preference…';
+  try {
+    const response = await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-marketing-optout', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Could not save preference');
+    statusEl.textContent = 'Saved. You will not receive Forge marketing emails at this address.';
+    form.querySelector('button').disabled = true;
+  } catch (error) {
+    statusEl.textContent = 'We could not save that preference just now. Please email hello@forgecompliance.co.uk and we will update it.';
+  }
+});
+</script>
+</body>
+</html>
