@@ -6,15 +6,16 @@
   <title>Custom SOP | Forge Compliance</title>
   <meta name="description" content="Order a site-specific custom SOP from Forge Compliance. Submit the brief first, then add it to your basket and pay securely by Stripe.">
   <link rel="icon" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="assets/css/styles.css?v=shop3">
+  <link rel="stylesheet" href="assets/css/styles.css?v=shop4">
+  <link rel="stylesheet" href="assets/css/cart.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="topbar"><div class="container"><span>UK-wide maintenance and compliance documentation</span><span>hello@forgecompliance.co.uk</span></div></div>
 <header class="site-header"><div class="container header-inner"><a href="index.html"><img class="logo" src="assets/images/forge-logo.png" alt="Forge Compliance"></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="custom-compliance.html">Custom Compliance</a><a href="documents.html">Shop</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header>
 <main id="main">
-<section class="page-hero"><div class="container" style="max-width:900px"><span class="eyebrow">Custom document</span><h1>Custom SOP, built around your site.</h1><p class="prose">Tell us what the procedure needs to cover. We save the brief first, then add that exact brief to your basket. You can combine it with any ready-made Forge documents and pay once through Stripe.</p><div class="hero-actions"><span class="btn btn-primary" style="pointer-events:none">£69 per custom SOP</span><a class="btn btn-outline" href="documents.html">Browse ready-made documents</a></div></div></section>
-<section class="section"><div class="container" style="max-width:900px"><div class="shop-note" style="display:block;margin-bottom:1.5rem"><strong>What happens next:</strong> submit the brief, check the summary, then add it to your basket. Payment confirms the job. If we need clarification, we’ll contact you using the email below.</div>
+<section class="page-hero"><div class="container" style="max-width:900px"><span class="eyebrow">Custom SOP · £69</span><h1>Need an SOP built for your actual site?</h1><p class="prose">Fill in the brief below and we’ll turn your task, equipment and site restrictions into a tailored SOP. Once the brief is saved it goes straight into your basket as a £69 item.</p><div class="hero-actions"><a class="btn btn-primary" href="#custom-brief-form">Start your custom SOP</a><a class="btn btn-outline" href="documents.html">Browse ready-made documents</a></div></div></section>
+<section class="section"><div class="container" style="max-width:900px"><div class="shop-note" style="display:block;margin-bottom:1.5rem"><strong>How it works:</strong> 1. Fill in the brief. 2. Tap <strong>Save brief & add to basket</strong>. 3. We save it securely and open your basket automatically. 4. Pay with your other documents in one Stripe checkout.</div>
 <form id="custom-brief-form" enctype="multipart/form-data" style="display:grid;gap:1rem">
 <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 <input type="hidden" name="submission_key" id="submission-key">
@@ -27,18 +28,51 @@
 <div class="grid-2"><label><strong>Deadline / urgency</strong><input name="deadline" maxlength="200" placeholder="Optional" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label><label><strong>Supporting files</strong><input name="files" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp" style="display:block;width:100%;margin-top:.4rem;padding:.65rem"></label></div>
 <p style="margin-top:-.4rem"><small>Up to 3 PDF, Word or image files. Maximum 8 MB each and 20 MB total.</small></p>
 <label><strong>Anything else we should know?</strong><textarea name="notes" maxlength="4000" rows="4" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
-<div><button id="brief-submit" class="btn btn-primary" type="submit">Save brief &amp; add to basket</button></div><p id="brief-status" role="status" aria-live="polite"></p>
+<div><button id="brief-submit" class="btn btn-primary" type="submit">Save brief &amp; add to basket</button></div><p id="brief-status" role="status" aria-live="polite" style="font-weight:700"></p>
 </form>
-<div id="brief-saved" class="card" style="display:none;margin-top:2rem"><span class="eyebrow">Brief saved</span><h2 id="saved-title">Custom SOP</h2><p id="saved-ref"></p><p>Your brief is now in the basket as its own £69 item. You can add more documents or go straight to secure checkout.</p><div class="hero-actions"><button class="btn btn-primary" id="open-basket" type="button">Open basket</button><a class="btn btn-outline" href="documents.html">Add ready-made documents</a></div></div>
+<div id="brief-saved" class="card" style="display:none;margin-top:2rem;border:2px solid #16794a"><span class="eyebrow">Added to basket</span><h2 id="saved-title">Custom SOP</h2><p id="saved-ref"></p><p>Your brief is saved and is now a £69 basket item. You can check out now or keep shopping.</p><div class="hero-actions"><button class="btn btn-primary" id="open-basket" type="button">Open basket</button><a class="btn btn-outline" href="documents.html">Add ready-made documents</a></div></div>
 </div></section>
 </main>
 <footer class="footer"><div class="container"><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
-<script src="assets/js/script.js?v=shop3"></script>
-<script src="assets/js/cart.js?v=3"></script>
+<script src="assets/js/script.js?v=shop6"></script>
+<script src="assets/js/cart.js?v=6"></script>
 <script>
 const form=document.getElementById('custom-brief-form'),statusEl=document.getElementById('brief-status'),submit=document.getElementById('brief-submit'),key=document.getElementById('submission-key');
-key.value=crypto.randomUUID();
-form.addEventListener('submit',async e=>{e.preventDefault();submit.disabled=true;submit.textContent='Saving brief…';statusEl.textContent='Uploading and saving your brief…';try{const fd=new FormData(form);const r=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-submit-brief',{method:'POST',body:fd});const d=await r.json().catch(()=>({}));if(!r.ok||!d.brief_id)throw new Error(d.error||'Could not save the brief.');const title=`Custom SOP – ${d.subject}`;window.dispatchEvent(new CustomEvent('forge:add-custom-item',{detail:{briefId:d.brief_id,title,amount:d.amount}}));document.getElementById('saved-title').textContent=title;document.getElementById('saved-ref').textContent=`Brief reference: ${d.brief_id.slice(0,8).toUpperCase()}`;document.getElementById('brief-saved').style.display='block';form.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);statusEl.textContent='Brief saved and added to your basket.';document.getElementById('brief-saved').scrollIntoView({behavior:'smooth',block:'center'});}catch(err){statusEl.textContent=err.message||'Could not save the brief.';submit.disabled=false;submit.textContent='Save brief & add to basket';}});
-document.getElementById('open-basket').addEventListener('click',()=>document.querySelector('.forge-cart-toggle')?.click());
+const makeKey=()=>{try{return crypto.randomUUID()}catch{return `brief-${Date.now()}-${Math.random().toString(36).slice(2)}`}};
+key.value=makeKey();
+const addBriefToBasket=(d,title)=>{
+  const item={slug:'custom-sop',briefId:d.brief_id,title,amount:Number(d.amount||6900),category:'Custom document'};
+  if(window.ForgeCart&&typeof window.ForgeCart.add==='function')return window.ForgeCart.add(item);
+  try{
+    const cart=JSON.parse(localStorage.getItem('forgeCartV1')||'[]')||[];
+    const itemKey=`brief:${item.briefId}`;
+    if(!cart.some(x=>(x.key||(x.briefId?`brief:${x.briefId}`:`slug:${x.slug}`))===itemKey))cart.push({...item,key:itemKey});
+    localStorage.setItem('forgeCartV1',JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent('forge:cart-updated'));
+    return true;
+  }catch{return false;}
+};
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!form.checkValidity()){form.reportValidity();return;}
+  submit.disabled=true;submit.textContent='Saving brief…';statusEl.textContent='Uploading and saving your brief…';
+  try{
+    const fd=new FormData(form);
+    const r=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-submit-brief',{method:'POST',body:fd});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok||!d.brief_id)throw new Error(d.error||'Could not save the brief.');
+    const title=`Custom SOP – ${d.subject}`;
+    const added=addBriefToBasket(d,title);
+    if(!added)throw new Error('Your brief was saved, but the basket could not be updated. Please refresh the page and open Basket.');
+    document.getElementById('saved-title').textContent=title;
+    document.getElementById('saved-ref').textContent=`Brief reference: ${d.brief_id.slice(0,8).toUpperCase()}`;
+    document.getElementById('brief-saved').style.display='block';
+    form.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);
+    statusEl.textContent='Brief saved and added to your basket.';
+    document.getElementById('brief-saved').scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>window.ForgeCart?.open?.(),250);
+  }catch(err){statusEl.textContent=err.message||'Could not save the brief.';submit.disabled=false;submit.textContent='Save brief & add to basket';}
+});
+document.getElementById('open-basket').addEventListener('click',()=>window.ForgeCart?.open?.()||document.querySelector('.forge-cart-toggle')?.click());
 </script>
 </body></html>
