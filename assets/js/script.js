@@ -4,6 +4,19 @@ if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.to
 
 document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
 
+if(nav&&!nav.querySelector('.header-basket-link')){
+  const basket=document.createElement('a');
+  basket.className='header-basket-link';
+  basket.href='catalogue.html?basket=open';
+  basket.innerHTML='🛒 Basket <span class="header-basket-count">0</span>';
+  const quote=nav.querySelector('.btn');
+  if(quote)nav.insertBefore(basket,quote);else nav.appendChild(basket);
+  const refreshBasketCount=()=>{try{const items=JSON.parse(localStorage.getItem('forgeCartV1')||'[]')||[];basket.querySelector('.header-basket-count').textContent=String(items.length)}catch{basket.querySelector('.header-basket-count').textContent='0'}};
+  refreshBasketCount();
+  window.addEventListener('storage',refreshBasketCount);
+  window.addEventListener('forge:cart-updated',refreshBasketCount);
+}
+
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
 
 /* Global mobile/layout guards. Keeps long footer content from widening the page and gives the header logo a little more presence on phones. */
@@ -14,6 +27,8 @@ html,body{max-width:100%;overflow-x:hidden}
 .footer a,.footer p,.footer span{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
 .footer a[href^="mailto:"]{display:block;overflow-wrap:anywhere;word-break:break-all;white-space:normal}
 .footer-grid{grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr))}
+.header-basket-link{display:inline-flex!important;align-items:center;gap:.4rem;font-weight:700}
+.header-basket-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.35rem;height:1.35rem;padding:0 .35rem;border-radius:999px;background:#111827;color:#fff;font-size:.75rem;line-height:1}
 @media(max-width:900px){
   .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .site-header .logo{width:260px;max-height:62px}
