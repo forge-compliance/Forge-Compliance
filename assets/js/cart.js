@@ -22,7 +22,7 @@
     countEl.textContent=String(cart.length);
     totalEl.textContent=money(cart.reduce((s,x)=>s+x.amount,0));
     checkoutBtn.disabled=!cart.length;
-    if(!cart.length){itemsEl.innerHTML='<div class="forge-cart-empty"><strong>Your basket is empty.</strong><br><small>Add any logbooks you want, then pay once.</small></div>';return;}
+    if(!cart.length){itemsEl.innerHTML='<div class="forge-cart-empty"><strong>Your basket is empty.</strong><br><small>Add any documents you want, then pay once.</small></div>';return;}
     itemsEl.innerHTML=cart.map(x=>`<div class="forge-cart-item"><div><h3>${x.title}</h3><small>${x.category||'Forge Compliance'}</small><strong>${money(x.amount)}</strong></div><button class="forge-cart-remove" type="button" data-remove="${x.slug}">Remove</button></div>`).join('');
   };
   itemsEl.addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;cart=cart.filter(x=>x.slug!==b.dataset.remove);save();render();document.querySelectorAll(`[data-cart-add][data-slug="${b.dataset.remove}"]`).forEach(btn=>btn.classList.remove('added'));});
