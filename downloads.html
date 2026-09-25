@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Downloads | Forge Compliance</title>
+  <meta name="description" content="Secure Forge Compliance order downloads.">
+  <link rel="icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css?v=shop2">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="container"><span>UK-wide maintenance and compliance documentation</span><span>hello@forgecompliance.co.uk</span></div></div>
+<header class="site-header"><div class="container header-inner"><a href="index.html"><img class="logo" src="assets/images/forge-logo.png" alt="Forge Compliance"></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="documents.html">Shop</a><a href="contact.html">Contact</a></nav></div></header>
+<main id="main">
+<section class="page-hero"><div class="container" style="max-width:760px"><span class="eyebrow">Secure order delivery</span><h1>Your Forge Compliance downloads</h1><p class="prose">We verify the Stripe order each time this page opens, then create fresh time-limited links to the files you purchased.</p></div></section>
+<section class="section"><div class="container" style="max-width:760px">
+  <div class="shop-note" id="download-status-box" style="display:block;margin-bottom:1.5rem"><span class="eyebrow">Order check</span><h2 id="download-title">Verifying your order…</h2><p id="download-status" role="status" aria-live="polite">This normally takes a moment.</p></div>
+  <div class="shop-note" id="download-box" style="display:none;border:2px solid #16794a;margin-bottom:1.5rem"><span class="eyebrow">Purchased files</span><h2>Ready to download</h2><div id="download-list" style="display:grid;gap:.8rem;margin-top:1rem"></div><p style="margin-top:1rem"><small>The file buttons use fresh one-hour secure links. Reopen this page later to generate new links.</small></p></div>
+  <div class="shop-note" id="custom-box" style="display:none;margin-bottom:1.5rem"><span class="eyebrow">Custom SOP</span><h2>Your brief is with us</h2><p>Custom SOPs are commissioned work rather than instant downloads. We’ll review the brief and contact you if anything needs clarifying.</p></div>
+  <p><a class="btn btn-outline" href="documents.html">Return to shop</a></p>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
+<script src="assets/js/script.js?v=shop6"></script>
+<script>
+(()=>{
+  const title=document.getElementById('download-title');
+  const status=document.getElementById('download-status');
+  const box=document.getElementById('download-box');
+  const list=document.getElementById('download-list');
+  const custom=document.getElementById('custom-box');
+  const sessionId=new URLSearchParams(location.search).get('session_id');
+  const showError=(heading,message)=>{title.textContent=heading;status.textContent=message;};
+  if(!sessionId){showError('Order reference missing','Use the secure download link in your Forge Compliance order email, or contact hello@forgecompliance.co.uk.');return;}
+  (async()=>{
+    try{
+      const response=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-order-confirmation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sessionId})});
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(result.error||'Order verification failed');
+      if(!result.paid){showError('Payment is still processing','The order is not ready for delivery yet. Reopen this page after Stripe confirms the checkout.');return;}
+      title.textContent='Order verified';
+      status.textContent=`Order ${result.order_ref||''} is confirmed.`;
+      const downloads=Array.isArray(result.downloads)?result.downloads:[];
+      if(downloads.length){
+        downloads.forEach(d=>{const a=document.createElement('a');a.className='btn btn-primary';a.href=d.url;a.textContent=`Download ${d.name||'document'}`;a.rel='noopener';list.appendChild(a);});
+        box.style.display='block';
+      }
+      if(Number(result.custom_briefs||0)>0)custom.style.display='block';
+      if(Array.isArray(result.missing_files)&&result.missing_files.length){status.textContent+=' One or more files are being prepared separately and have been flagged to Forge.';}
+      if(!downloads.length&&!Number(result.custom_briefs||0))showError('Order verified','No instant-download file is currently mapped to this order. Forge has been notified so the document can be sent manually.');
+    }catch(err){showError('Could not load downloads','The Stripe order could not be verified just now. Try the link again shortly or contact hello@forgecompliance.co.uk.');}
+  })();
+})();
+</script>
+</body>
+</html>
