@@ -17,7 +17,6 @@
 <section class="page-hero"><div class="container" style="max-width:900px"><span class="eyebrow">Custom SOP · £69</span><h1>Need an SOP built for your actual site?</h1><p class="prose">Fill in the brief below and we’ll turn your task, equipment and site restrictions into a tailored SOP. Once the brief is saved it goes straight into your basket as a £69 item.</p><div class="hero-actions"><a class="btn btn-primary" href="#custom-brief-form">Start your custom SOP</a><a class="btn btn-outline" href="documents.html">Browse ready-made documents</a></div></div></section>
 <section class="section"><div class="container" style="max-width:900px"><div class="shop-note" style="display:block;margin-bottom:1.5rem"><strong>How it works:</strong> 1. Fill in the brief. 2. Tap <strong>Save brief & add to basket</strong>. 3. We save it securely and open your basket automatically. 4. Pay with your other documents in one Stripe checkout.</div>
 <form id="custom-brief-form" enctype="multipart/form-data" style="display:grid;gap:1rem">
-<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 <input type="hidden" name="submission_key" id="submission-key">
 <div class="grid-2"><label><strong>Company / site name *</strong><input name="company_name" required maxlength="200" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label><label><strong>Contact name *</strong><input name="contact_name" required maxlength="150" autocomplete="name" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label></div>
 <label><strong>Contact email *</strong><input name="contact_email" type="email" required maxlength="254" autocomplete="email" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label>
@@ -37,42 +36,56 @@
 <script src="assets/js/script.js?v=shop6"></script>
 <script src="assets/js/cart.js?v=6"></script>
 <script>
-const form=document.getElementById('custom-brief-form'),statusEl=document.getElementById('brief-status'),submit=document.getElementById('brief-submit'),key=document.getElementById('submission-key');
-const makeKey=()=>{try{return crypto.randomUUID()}catch{return `brief-${Date.now()}-${Math.random().toString(36).slice(2)}`}};
-key.value=makeKey();
-const addBriefToBasket=(d,title)=>{
-  const item={slug:'custom-sop',briefId:d.brief_id,title,amount:Number(d.amount||6900),category:'Custom document'};
-  if(window.ForgeCart&&typeof window.ForgeCart.add==='function')return window.ForgeCart.add(item);
-  try{
-    const cart=JSON.parse(localStorage.getItem('forgeCartV1')||'[]')||[];
-    const itemKey=`brief:${item.briefId}`;
-    if(!cart.some(x=>(x.key||(x.briefId?`brief:${x.briefId}`:`slug:${x.slug}`))===itemKey))cart.push({...item,key:itemKey});
-    localStorage.setItem('forgeCartV1',JSON.stringify(cart));
-    window.dispatchEvent(new CustomEvent('forge:cart-updated'));
-    return true;
-  }catch{return false;}
-};
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  if(!form.checkValidity()){form.reportValidity();return;}
-  submit.disabled=true;submit.textContent='Saving brief…';statusEl.textContent='Uploading and saving your brief…';
-  try{
-    const fd=new FormData(form);
-    const r=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-submit-brief',{method:'POST',body:fd});
-    const d=await r.json().catch(()=>({}));
-    if(!r.ok||!d.brief_id)throw new Error(d.error||'Could not save the brief.');
-    const title=`Custom SOP – ${d.subject}`;
-    const added=addBriefToBasket(d,title);
-    if(!added)throw new Error('Your brief was saved, but the basket could not be updated. Please refresh the page and open Basket.');
-    document.getElementById('saved-title').textContent=title;
-    document.getElementById('saved-ref').textContent=`Brief reference: ${d.brief_id.slice(0,8).toUpperCase()}`;
-    document.getElementById('brief-saved').style.display='block';
-    form.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);
-    statusEl.textContent='Brief saved and added to your basket.';
-    document.getElementById('brief-saved').scrollIntoView({behavior:'smooth',block:'center'});
-    setTimeout(()=>window.ForgeCart?.open?.(),250);
-  }catch(err){statusEl.textContent=err.message||'Could not save the brief.';submit.disabled=false;submit.textContent='Save brief & add to basket';}
-});
-document.getElementById('open-basket').addEventListener('click',()=>window.ForgeCart?.open?.()||document.querySelector('.forge-cart-toggle')?.click());
+(()=>{
+  const briefForm=document.getElementById('custom-brief-form');
+  const statusEl=document.getElementById('brief-status');
+  const submitBtn=document.getElementById('brief-submit');
+  const keyEl=document.getElementById('submission-key');
+  const makeKey=()=>{try{return crypto.randomUUID()}catch{return `brief-${Date.now()}-${Math.random().toString(36).slice(2)}`}};
+  keyEl.value=makeKey();
+
+  const addBriefToBasket=(d,title)=>{
+    const item={slug:'custom-sop',briefId:d.brief_id,title,amount:Number(d.amount||6900),category:'Custom document'};
+    if(window.ForgeCart&&typeof window.ForgeCart.add==='function')return window.ForgeCart.add(item);
+    try{
+      const cart=JSON.parse(localStorage.getItem('forgeCartV1')||'[]')||[];
+      const itemKey=`brief:${item.briefId}`;
+      if(!cart.some(x=>(x.key||(x.briefId?`brief:${x.briefId}`:`slug:${x.slug}`))===itemKey))cart.push({...item,key:itemKey});
+      localStorage.setItem('forgeCartV1',JSON.stringify(cart));
+      window.dispatchEvent(new CustomEvent('forge:cart-updated'));
+      return true;
+    }catch{return false;}
+  };
+
+  briefForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!briefForm.checkValidity()){briefForm.reportValidity();return;}
+    submitBtn.disabled=true;
+    submitBtn.textContent='Saving brief…';
+    statusEl.textContent='Uploading and saving your brief…';
+    try{
+      const fd=new FormData(briefForm);
+      const r=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-submit-brief',{method:'POST',body:fd});
+      const d=await r.json().catch(()=>({}));
+      if(!r.ok||!d.brief_id)throw new Error(d.error||'Could not save the brief.');
+      const title=`Custom SOP – ${d.subject}`;
+      const added=addBriefToBasket(d,title);
+      if(!added)throw new Error('Your brief was saved, but the basket could not be updated. Refresh the page and open Basket.');
+      document.getElementById('saved-title').textContent=title;
+      document.getElementById('saved-ref').textContent=`Brief reference: ${d.brief_id.slice(0,8).toUpperCase()}`;
+      document.getElementById('brief-saved').style.display='block';
+      briefForm.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);
+      statusEl.textContent='Brief saved and added to your basket.';
+      document.getElementById('brief-saved').scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(()=>window.ForgeCart?.open?.(),250);
+    }catch(err){
+      statusEl.textContent=err?.message||'Could not save the brief.';
+      submitBtn.disabled=false;
+      submitBtn.textContent='Save brief & add to basket';
+    }
+  });
+
+  document.getElementById('open-basket').addEventListener('click',()=>window.ForgeCart?.open?.()||document.querySelector('.forge-cart-toggle')?.click());
+})();
 </script>
 </body></html>
