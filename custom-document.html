@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Custom SOP | Forge Compliance</title>
+  <meta name="description" content="Order a site-specific custom SOP from Forge Compliance. Submit the brief first, then add it to your basket and pay securely by Stripe.">
+  <link rel="icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css?v=shop3">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="container"><span>UK-wide maintenance and compliance documentation</span><span>hello@forgecompliance.co.uk</span></div></div>
+<header class="site-header"><div class="container header-inner"><a href="index.html"><img class="logo" src="assets/images/forge-logo.png" alt="Forge Compliance"></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="custom-compliance.html">Custom Compliance</a><a href="documents.html">Shop</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header>
+<main id="main">
+<section class="page-hero"><div class="container" style="max-width:900px"><span class="eyebrow">Custom document</span><h1>Custom SOP, built around your site.</h1><p class="prose">Tell us what the procedure needs to cover. We save the brief first, then add that exact brief to your basket. You can combine it with any ready-made Forge documents and pay once through Stripe.</p><div class="hero-actions"><span class="btn btn-primary" style="pointer-events:none">£69 per custom SOP</span><a class="btn btn-outline" href="documents.html">Browse ready-made documents</a></div></div></section>
+<section class="section"><div class="container" style="max-width:900px"><div class="shop-note" style="display:block;margin-bottom:1.5rem"><strong>What happens next:</strong> submit the brief, check the summary, then add it to your basket. Payment confirms the job. If we need clarification, we’ll contact you using the email below.</div>
+<form id="custom-brief-form" enctype="multipart/form-data" style="display:grid;gap:1rem">
+<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+<input type="hidden" name="submission_key" id="submission-key">
+<div class="grid-2"><label><strong>Company / site name *</strong><input name="company_name" required maxlength="200" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label><label><strong>Contact name *</strong><input name="contact_name" required maxlength="150" autocomplete="name" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label></div>
+<label><strong>Contact email *</strong><input name="contact_email" type="email" required maxlength="254" autocomplete="email" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label>
+<label><strong>What should the SOP cover? *</strong><textarea name="subject_task" required maxlength="500" rows="3" placeholder="For example: weekly generator test, pool chemical delivery, boiler room shutdown..." style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
+<label><strong>Equipment, process or system involved</strong><textarea name="equipment_process" maxlength="4000" rows="4" placeholder="Make/model, plant involved, normal operating sequence, relevant controls..." style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
+<label><strong>Site hazards or restrictions</strong><textarea name="hazards_restrictions" maxlength="4000" rows="4" placeholder="Guest areas, lone working, chemicals, isolation points, access restrictions, permits..." style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
+<label><strong>Existing procedure or current way of working</strong><textarea name="existing_procedure" maxlength="4000" rows="4" placeholder="Describe what the team does now, even if it is informal." style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
+<div class="grid-2"><label><strong>Deadline / urgency</strong><input name="deadline" maxlength="200" placeholder="Optional" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></label><label><strong>Supporting files</strong><input name="files" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp" style="display:block;width:100%;margin-top:.4rem;padding:.65rem"></label></div>
+<p style="margin-top:-.4rem"><small>Up to 3 PDF, Word or image files. Maximum 8 MB each and 20 MB total.</small></p>
+<label><strong>Anything else we should know?</strong><textarea name="notes" maxlength="4000" rows="4" style="display:block;width:100%;margin-top:.4rem;padding:.85rem"></textarea></label>
+<div><button id="brief-submit" class="btn btn-primary" type="submit">Save brief &amp; add to basket</button></div><p id="brief-status" role="status" aria-live="polite"></p>
+</form>
+<div id="brief-saved" class="card" style="display:none;margin-top:2rem"><span class="eyebrow">Brief saved</span><h2 id="saved-title">Custom SOP</h2><p id="saved-ref"></p><p>Your brief is now in the basket as its own £69 item. You can add more documents or go straight to secure checkout.</p><div class="hero-actions"><button class="btn btn-primary" id="open-basket" type="button">Open basket</button><a class="btn btn-outline" href="documents.html">Add ready-made documents</a></div></div>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
+<script src="assets/js/script.js?v=shop3"></script>
+<script src="assets/js/cart.js?v=3"></script>
+<script>
+const form=document.getElementById('custom-brief-form'),statusEl=document.getElementById('brief-status'),submit=document.getElementById('brief-submit'),key=document.getElementById('submission-key');
+key.value=crypto.randomUUID();
+form.addEventListener('submit',async e=>{e.preventDefault();submit.disabled=true;submit.textContent='Saving brief…';statusEl.textContent='Uploading and saving your brief…';try{const fd=new FormData(form);const r=await fetch('https://sswedojvkqvoqmwhfmkj.supabase.co/functions/v1/forge-submit-brief',{method:'POST',body:fd});const d=await r.json().catch(()=>({}));if(!r.ok||!d.brief_id)throw new Error(d.error||'Could not save the brief.');const title=`Custom SOP – ${d.subject}`;window.dispatchEvent(new CustomEvent('forge:add-custom-item',{detail:{briefId:d.brief_id,title,amount:d.amount}}));document.getElementById('saved-title').textContent=title;document.getElementById('saved-ref').textContent=`Brief reference: ${d.brief_id.slice(0,8).toUpperCase()}`;document.getElementById('brief-saved').style.display='block';form.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);statusEl.textContent='Brief saved and added to your basket.';document.getElementById('brief-saved').scrollIntoView({behavior:'smooth',block:'center'});}catch(err){statusEl.textContent=err.message||'Could not save the brief.';submit.disabled=false;submit.textContent='Save brief & add to basket';}});
+document.getElementById('open-basket').addEventListener('click',()=>document.querySelector('.forge-cart-toggle')?.click());
+</script>
+</body></html>
