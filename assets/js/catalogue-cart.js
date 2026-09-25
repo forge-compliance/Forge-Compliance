@@ -3,8 +3,11 @@
   if(!grid || typeof products==='undefined') return;
 
   const enhance=()=>{
-    grid.querySelectorAll('.product-footer a[href^="https://buy.stripe.com"]').forEach(link=>{
-      const p=products.find(x=>x.link===link.href);
+    grid.querySelectorAll('.product-card').forEach(card=>{
+      const link=card.querySelector('.product-footer a');
+      if(!link) return;
+      const title=card.querySelector('h3')?.textContent?.trim();
+      const p=products.find(x=>x.title===title);
       if(!p) return;
       const button=document.createElement('button');
       button.type='button';
