@@ -1,0 +1,32 @@
+/* Final homepage brand cleanup: remove legacy orange and restore contrast */
+.home-custom-link{color:var(--forge-navy)!important}
+.home-custom-link strong{color:var(--forge-navy)!important}
+.home-custom-link span{color:var(--forge-sage-dark)!important}
+.home-custom-link:hover span{color:#526A55!important}
+
+.home-ccs-panel{background:#fff!important;border:1px solid #dfe3df!important;color:var(--forge-navy)!important}
+.home-ccs-panel-head strong{color:var(--forge-navy)!important}
+.home-ccs-panel-head span{color:var(--forge-sage-dark)!important}
+.home-ccs-mini-grid .ccs-module{background:#fff!important;border:1px solid #dfe3df!important;color:var(--forge-navy)!important;box-shadow:0 8px 22px rgba(15,45,70,.08)!important}
+.home-ccs-mini-grid .ccs-module:before{background:var(--forge-sage-dark)!important}
+.home-ccs-mini-grid .ccs-module:hover{border-color:var(--forge-sage)!important;box-shadow:0 14px 28px rgba(15,45,70,.13)!important}
+.ccs-icon{background:#E8EEE7!important;border-color:#C7D3C9!important;color:var(--forge-sage-dark)!important}
+.home-ccs-mini-grid .ccs-module em{color:var(--forge-sage-dark)!important}
+.home-ccs-mini-grid .ccs-module strong{color:var(--forge-navy)!important}
+.home-ccs-mini-grid .ccs-module small{color:#6b7b87!important}
+.home-ccs-mini-grid .ccs-module i{color:var(--forge-navy)!important}
+.home-ccs-demo-link{background:var(--forge-sage-dark)!important;color:#fff!important;box-shadow:0 10px 24px rgba(97,119,99,.18)!important}
+
+/* Catch any remaining logbook/pack accents that leaked through older page CSS. */
+.logbooks-kicker,.logbooks-hero h1 span,.book b,.book small,.logbook-cover .brand,.logbook-cover small,.pack-back{color:var(--forge-sage-dark)!important}
+.logbooks-strip,.logbooks-strip-inner div{background:var(--forge-sage-dark)!important}
+.book:before,.logbook-cover:before{background:var(--forge-sage-dark)!important}
+.logbooks-price-badge{border-color:rgba(138,159,142,.55)!important;background:rgba(138,159,142,.12)!important}
+.logbooks-price-badge span{color:#B8C9BA!important}
+.logbook-buy a{background:var(--forge-sage-dark)!important}
+.logbook-buy a:hover{background:#526A55!important}
+.logbooks-note strong,.logbooks-note a:hover{color:#B8C9BA!important}
+.pack-hero{background:linear-gradient(115deg,var(--forge-ivory),var(--forge-ivory-2))!important;color:var(--forge-navy)!important}
+.pack-hero p,.pack-price-row span{color:#5e7180!important}
+.pack-section{background:var(--forge-ivory)!important}.pack-section.alt{background:var(--forge-ivory-2)!important}
+.pack-back{color:var(--forge-sage-dark)!important}
