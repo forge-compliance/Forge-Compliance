@@ -17,6 +17,12 @@ if(!document.querySelector('link[href*="brand-refresh-fixes.css"]')){
   brandFixes.href='assets/css/brand-refresh-fixes.css?v=2';
   document.head.appendChild(brandFixes);
 }
+if(!document.querySelector('link[href*="brand-home-fixes.css"]')){
+  const homeBrandFixes=document.createElement('link');
+  homeBrandFixes.rel='stylesheet';
+  homeBrandFixes.href='assets/css/brand-home-fixes.css?v=1';
+  document.head.appendChild(homeBrandFixes);
+}
 document.querySelectorAll('img[src*="forge-logo.png"]').forEach(img=>{
   img.src='assets/images/forge-logo-shield.svg';
   img.alt='Forge Compliance';
