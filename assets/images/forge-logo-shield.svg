@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 210" role="img" aria-labelledby="title desc">
+  <title id="title">Forge Compliance</title>
+  <desc id="desc">Shield Forge mark in deep navy and sage green with Forge Compliance wordmark.</desc>
+  <g transform="translate(14 14)">
+    <path d="M88 0 166 28v64c0 49-31 82-78 106C41 174 10 141 10 92V28L88 0Z" fill="#0F2D46"/>
+    <path d="M88 0 166 28v29L88 29Z" fill="#8A9F8E"/>
+    <path d="M51 52h78v27H78v19h43v27H78v48H51Z" fill="#F7F6F2"/>
+  </g>
+  <g fill="#0F2D46">
+    <text x="214" y="96" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="78" font-weight="800" letter-spacing="-2">Forge</text>
+    <text x="218" y="151" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="31" font-weight="700" letter-spacing="10">COMPLIANCE</text>
+  </g>
+</svg>
