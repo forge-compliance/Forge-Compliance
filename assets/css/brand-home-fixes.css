@@ -30,3 +30,12 @@
 .pack-hero p,.pack-price-row span{color:#5e7180!important}
 .pack-section{background:var(--forge-ivory)!important}.pack-section.alt{background:var(--forge-ivory-2)!important}
 .pack-back{color:var(--forge-sage-dark)!important}
+
+/* Shop custom-SOP card: replace legacy orange and stop the mobile two-column squeeze. */
+.shop-hub-section [style*="#ff6a00"]{border-color:var(--forge-sage-dark)!important;background:#F4F6F1!important}
+.shop-hub-section [style*="#fff7ef"]{background:#F4F6F1!important}
+@media(max-width:700px){
+  .shop-hub-section [style*="grid-template-columns:1fr auto"]{display:block!important;padding:1.1rem!important}
+  .shop-hub-section [style*="grid-template-columns:1fr auto"] .btn{display:flex!important;width:100%!important;margin-top:1rem!important}
+  .shop-hub-section [style*="grid-template-columns:1fr auto"] p{font-size:.95rem!important;line-height:1.55!important}
+}
