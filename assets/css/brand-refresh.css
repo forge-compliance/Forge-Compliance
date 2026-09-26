@@ -1,0 +1,114 @@
+/* Forge Compliance brand refresh: Shield Forge / ivory + navy + sage */
+:root{
+  --forge-navy:#0F2D46;
+  --forge-navy-deep:#0A2236;
+  --forge-sage:#8A9F8E;
+  --forge-sage-dark:#617763;
+  --forge-ivory:#F7F6F2;
+  --forge-ivory-2:#EFEDE6;
+  --forge-grey:#D4D8DC;
+  --forge-text:#183044;
+  --forge-muted:#667783;
+  --forge-line:#D9DDD9;
+  --ink:#0F2D46;
+  --ink2:#0A2236;
+  --panel:#173A54;
+  --orange:#8A9F8E;
+  --orange2:#6F866F;
+  --silver:#D4D8DC;
+  --muted:#71808C;
+  --white:#fff;
+}
+
+html,body{background:var(--forge-ivory)!important;color:var(--forge-text)}
+body{background:var(--forge-ivory)!important}
+
+.topbar{background:var(--forge-navy-deep)!important;color:#d7e0e4!important}
+.site-header{background:rgba(247,246,242,.97)!important;border-bottom:1px solid var(--forge-line)!important;box-shadow:0 6px 22px rgba(15,45,70,.05)}
+.nav-links{color:var(--forge-navy)!important}
+.nav-links a:not(.btn):after{background:var(--forge-sage)!important}
+.nav-toggle{color:var(--forge-navy)!important;border-color:#bcc7c2!important}
+.logo,.footer-logo{filter:none!important}
+
+.btn-primary,.home-shop-btn,.home-ccs-primary,.forge-cart-checkout,.forge-add-button{
+  background:var(--forge-sage-dark)!important;
+  color:#fff!important;
+  box-shadow:0 10px 28px rgba(97,119,99,.20)!important;
+}
+.btn-primary:hover,.home-shop-btn:hover,.home-ccs-primary:hover,.forge-cart-checkout:hover,.forge-add-button:hover{background:#526A55!important}
+.btn-outline{border-color:rgba(15,45,70,.28)!important;color:var(--forge-navy)!important;background:rgba(247,246,242,.46)!important}
+.btn-dark{background:var(--forge-navy)!important}
+.eyebrow,.link-arrow,.home-doc-tag,.home-logbooks-kicker,.home-ccs-panel-head span,.home-cta a,.product-category{color:var(--forge-sage-dark)!important}
+
+/* Main hero surfaces */
+.hero,.home-hero,.page-hero,.shop-hero,.shop-hub-hero{
+  background:linear-gradient(115deg,rgba(247,246,242,.98),rgba(239,237,230,.95)),radial-gradient(circle at 82% 18%,rgba(138,159,142,.25),transparent 31%)!important;
+  color:var(--forge-navy)!important;
+}
+.home-hero:after,.hero-visual:before,.home-ccs-shell:after{background:radial-gradient(circle,rgba(138,159,142,.20),rgba(138,159,142,0) 68%)!important}
+.home-hero:before{opacity:.38!important;background-image:linear-gradient(rgba(15,45,70,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(15,45,70,.035) 1px,transparent 1px)!important}
+.hero h1 span,.home-hero h1 span{color:var(--forge-sage-dark)!important}
+.hero p,.home-hero p,.shop-hero .prose,.shop-hub-hero p{color:#536977!important}
+.home-hero-points span,.shop-trust span{color:var(--forge-navy)!important;background:rgba(255,255,255,.62)!important;border-color:#d8ded8!important}
+.home-hero-points span:before{color:var(--forge-sage-dark)!important}
+
+.section,.shop-section,.shop-hub-section,.home-simple{background:var(--forge-ivory)!important}
+.section-muted,.shop-hub-section.alt,.home-ccs{background:var(--forge-ivory-2)!important}
+.section-dark,.home-logbooks-shell,.home-ccs-shell,.pack-tile,.shop-note,.home-cta{background:var(--forge-navy)!important;color:#fff!important}
+.section-dark .card{background:#173A54!important}
+
+.card,.product-card,.hub-tile,.shop-toolbar,.form-card,.price-card,.home-doc-card,.home-ccs-panel,.forge-cart-drawer{
+  background:#fff!important;
+  border-color:#dfe3df!important;
+}
+.card-icon{background:rgba(138,159,142,.18)!important;color:var(--forge-sage-dark)!important}
+.industry{background:linear-gradient(160deg,#163750,#0F2D46)!important}
+.industry:before{background:rgba(138,159,142,.22)!important}
+.step:before{color:rgba(138,159,142,.26)!important}
+.price-card.featured{background:var(--forge-navy)!important;border-color:var(--forge-sage)!important}
+.feature-list li:before{color:var(--forge-sage)!important}
+.band{background:var(--forge-sage-dark)!important}
+.notice,.shop-hub-note{background:#F0F3ED!important;border-left-color:var(--forge-sage-dark)!important}
+.doc-cover{border-top-color:var(--forge-sage-dark)!important}
+
+/* Home details */
+.home-doc-card-logbooks{background:var(--forge-navy)!important;border-color:#2b4b62!important}
+.home-doc-card-logbooks .home-doc-tag,.home-ccs-kicker span{background:var(--forge-sage-dark)!important;color:#fff!important}
+.home-logbooks-shell:before{background:radial-gradient(circle at 85% 18%,rgba(138,159,142,.25),transparent 25%),linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px)!important}
+.home-logbooks-action span,.mini-book b,.mini-book small,.home-ccs-features span:before{color:#AFC0B0!important}
+.mini-book:before{background:var(--forge-sage-dark)!important}
+.home-ccs-demo-link{background:var(--forge-navy)!important}
+
+/* Shop */
+.shop-section{background:linear-gradient(var(--forge-ivory),#f1efe9)!important}
+.product-icon,.hub-icon{background:var(--forge-navy)!important;color:#B5C5B7!important}
+.product-badge{background:var(--forge-sage-dark)!important}
+.product-copy li:before{color:var(--forge-sage-dark)!important}
+.hub-link{color:var(--forge-sage-dark)!important}
+.pack-tile .eyebrow{color:#B8C9BA!important}
+.pack-save{background:rgba(138,159,142,.18)!important;color:#D8E3D8!important}
+
+/* Cart */
+.forge-cart-toggle,.forge-cart-toast{background:var(--forge-navy)!important}
+.forge-cart-count{background:var(--forge-sage-dark)!important}
+.forge-promo input:focus{outline-color:var(--forge-sage-dark)!important}
+.forge-cart-foot{background:#F4F2EC!important}
+.forge-add-button.added{background:#45684B!important}
+
+/* Header injected controls */
+.header-custom-sop-link{background:#E8EEE7!important;color:#425E48!important}
+.header-basket-count{background:var(--forge-navy)!important;color:#fff!important}
+
+/* Footer */
+.footer,.home-footer{background:var(--forge-navy-deep)!important;color:#c4d0d6!important}
+.footer h3{color:#fff!important}
+
+/* Forms */
+input,select,textarea{background:#fff!important;border-color:#cfd8d3!important}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(138,159,142,.22)!important;border-color:var(--forge-sage-dark)!important}
+.confirmation-section{background:var(--forge-ivory)!important}
+.confirmation-icon{background:rgba(138,159,142,.18)!important;color:var(--forge-sage-dark)!important}
+
+@media(max-width:900px){
+  .nav-links{background:var(--forge-ivory)!important;color:var(--forge-navy)!important;border-top:1px solid var(--forge-line)!important}
+}
