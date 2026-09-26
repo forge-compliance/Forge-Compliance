@@ -4,6 +4,20 @@ if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.to
 
 document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
 
+/* Brand refresh: load the new ivory/navy/sage theme and swap legacy orange logos. */
+if(!document.querySelector('link[href*="brand-refresh.css"]')){
+  const brandCss=document.createElement('link');
+  brandCss.rel='stylesheet';
+  brandCss.href='assets/css/brand-refresh.css?v=1';
+  document.head.appendChild(brandCss);
+}
+document.querySelectorAll('img[src*="forge-logo.png"]').forEach(img=>{
+  img.src='assets/images/forge-logo-shield.svg';
+  img.alt='Forge Compliance';
+});
+const favicon=document.querySelector('link[rel="icon"]');
+if(favicon)favicon.href='assets/images/favicon.svg?v=2';
+
 if(nav&&!nav.querySelector('.header-custom-sop-link')){
   const custom=document.createElement('a');
   custom.className='header-custom-sop-link';
@@ -42,9 +56,9 @@ html,body{max-width:100%;overflow-x:hidden}
 .footer a,.footer p,.footer span{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
 .footer a[href^="mailto:"]{display:block;overflow-wrap:anywhere;word-break:break-all;white-space:normal}
 .footer-grid{grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr))}
-.header-custom-sop-link{display:inline-flex!important;align-items:center;padding:.5rem .7rem;border-radius:999px;background:#fff3e8;color:#a64200!important;font-weight:900!important;white-space:nowrap}
+.header-custom-sop-link{display:inline-flex!important;align-items:center;padding:.5rem .7rem;border-radius:999px;background:#E8EEE7;color:#425E48!important;font-weight:900!important;white-space:nowrap}
 .header-basket-link{display:inline-flex!important;align-items:center;gap:.4rem;font-weight:700}
-.header-basket-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.35rem;height:1.35rem;padding:0 .35rem;border-radius:999px;background:#111827;color:#fff;font-size:.75rem;line-height:1}
+.header-basket-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.35rem;height:1.35rem;padding:0 .35rem;border-radius:999px;background:#0F2D46;color:#fff;font-size:.75rem;line-height:1}
 @media(max-width:900px){
   .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .site-header .logo{width:260px;max-height:62px}
