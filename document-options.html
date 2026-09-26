@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Choose Your Document Route | Forge Compliance</title>
+  <meta name="description" content="Choose a ready-made Forge Compliance template or start a custom compliance document built around your site and operation.">
+  <link rel="icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body{background:#0b1117;color:#fff}.route-hero{padding:clamp(3rem,8vw,6rem) 0;background:radial-gradient(circle at 85% 15%,rgba(255,106,0,.18),transparent 28%),linear-gradient(135deg,#08111a,#111c27)}.route-wrap{max-width:920px}.route-kicker{display:inline-block;color:#ff7a16;font-size:.72rem;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.route-hero h1{font-size:clamp(2.5rem,7vw,5rem);line-height:.98;letter-spacing:-.045em;margin:.55rem 0 1rem}.route-hero p{max-width:700px;color:#b8c3ce;font-size:1.08rem;line-height:1.65}.route-section{padding:clamp(2.5rem,6vw,4.5rem) 0}.route-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.route-card{display:flex;flex-direction:column;min-height:300px;padding:1.5rem;border-radius:22px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,#141e28,#101820);box-shadow:0 16px 38px rgba(0,0,0,.2);color:#fff}.route-card.custom{background:linear-gradient(145deg,#151a21,#201710);border-color:rgba(255,122,22,.3)}.route-card span{color:#ff7a16;font-size:.68rem;font-weight:950;letter-spacing:.12em;text-transform:uppercase}.route-card h2{font-size:clamp(1.7rem,4vw,2.35rem);margin:.5rem 0 .75rem}.route-card p{color:#aebbc8;line-height:1.6;margin:0}.route-card ul{margin:1rem 0 1.2rem;padding-left:1.15rem;color:#d4dce3}.route-card li{margin:.38rem 0}.route-card a{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.1rem;border-radius:12px;background:#ff6a00;color:#fff;font-weight:950}.route-card.custom a{background:transparent;border:1px solid rgba(255,122,22,.55);color:#ff8a34}.route-back{display:inline-block;margin-top:1.4rem;color:#aebbc8;font-weight:800}.route-back:hover{color:#fff}@media(max-width:700px){.route-grid{grid-template-columns:1fr}.route-card{min-height:260px}.route-hero{padding:2.7rem 0 3rem}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar"><div class="container"><span>UK-wide maintenance and compliance documentation</span><span>hello@forgecompliance.co.uk</span></div></div>
+<header class="site-header"><div class="container header-inner"><a href="index.html"><img class="logo" src="assets/images/forge-logo.png" alt="Forge Compliance"></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="custom-compliance.html">Custom Compliance</a><a href="documents.html">Shop</a><a href="logbooks.html">Logbooks</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header>
+<main id="main">
+  <section class="route-hero"><div class="container route-wrap"><span class="route-kicker" id="route-kicker">Document options</span><h1 id="route-title">Choose how you want to start.</h1><p id="route-lead">Start with a ready-made editable template, or have Forge build something around your actual site, equipment and working method.</p></div></section>
+  <section class="route-section"><div class="container route-wrap"><div class="route-grid">
+    <article class="route-card"><span>Ready-made</span><h2 id="ready-title">Browse templates</h2><p id="ready-copy">Choose an existing editable Forge document and download it after checkout.</p><ul><li>Instant secure delivery</li><li>Editable Word files</li><li>Built for practical workplace use</li></ul><a id="ready-link" href="catalogue.html">Browse ready-made documents <b>→</b></a></article>
+    <article class="route-card custom"><span>Custom-built</span><h2 id="custom-title">Build it around your operation</h2><p id="custom-copy">If the template does not quite fit, start with the real task, site or process and we can build the document around it.</p><ul><li>Site-specific wording</li><li>Your equipment and hazards</li><li>Built around the real workflow</li></ul><a id="custom-link" href="custom-compliance.html">Explore custom compliance <b>→</b></a></article>
+  </div><a class="route-back" href="index.html">← Back to home</a></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
+<script>
+const t=new URLSearchParams(location.search).get('type')||'documents';
+const data={
+  sop:{k:'Standard Operating Procedures',title:'How do you want your SOP?',lead:'Choose a ready-made SOP and adapt it yourself, or start a custom brief and have one built around your actual task and site.',ready:'Browse ready-made SOPs',readyCopy:'Pick from the Forge SOP range and download an editable file immediately after checkout.',readyHref:'catalogue.html?type=sop',custom:'Start a custom SOP',customCopy:'Tell us the task, equipment, hazards and restrictions and we will build the SOP around your operation.',customHref:'custom-document.html'},
+  rams:{k:'RAMS & Risk Assessments',title:'Start with a template, or build around the job.',lead:'Use an editable RAMS or risk-assessment template as your starting point, or take the custom route when the work needs something site-specific.',ready:'Browse RAMS & risk assessments',readyCopy:'Choose an existing editable RAMS or risk assessment from the Forge catalogue.',readyHref:'catalogue.html?type=rams',custom:'Request a custom document',customCopy:'For unusual work, equipment or site constraints, use the custom compliance route and build around the real job.',customHref:'custom-compliance.html'},
+  records:{k:'Logs, Registers & COSHH',title:'Choose the right record for the job.',lead:'Start with one of the ready-made operational records and assessments, or use the custom route when your process needs a document built around it.',ready:'Browse records & COSHH',readyCopy:'Explore editable logs, registers, inspection records and COSHH templates from the Forge catalogue.',readyHref:'catalogue.html',custom:'Request a custom document',customCopy:'Need a register, record or assessment that matches your own process? Start with custom compliance.',customHref:'custom-compliance.html'}
+};
+const d=data[t]||data.sop;
+document.getElementById('route-kicker').textContent=d.k;document.getElementById('route-title').textContent=d.title;document.getElementById('route-lead').textContent=d.lead;document.getElementById('ready-title').textContent=d.ready;document.getElementById('ready-copy').textContent=d.readyCopy;document.getElementById('ready-link').href=d.readyHref;document.getElementById('custom-title').textContent=d.custom;document.getElementById('custom-copy').textContent=d.customCopy;document.getElementById('custom-link').href=d.customHref;
+</script>
+<script src="assets/js/script.js?v=2"></script>
+</body></html>
