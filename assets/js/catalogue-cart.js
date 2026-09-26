@@ -8,7 +8,7 @@
       if(!link) return;
       const title=card.querySelector('h3')?.textContent?.trim();
       const p=products.find(x=>x.title===title);
-      if(!p) return;
+      if(!p || p.directCheckout) return;
       const button=document.createElement('button');
       button.type='button';
       button.className=link.className;
