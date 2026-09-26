@@ -1,0 +1,36 @@
+/* Final colour sweep for legacy orange/red components */
+:root{--forge-navy:#0F2D46;--forge-navy-deep:#0A2236;--forge-sage:#8A9F8E;--forge-sage-dark:#617763;--forge-ivory:#F7F6F2;--forge-ivory-2:#EFEDE6;--forge-text:#183044}
+
+/* Homepage leftovers */
+.home-custom-link{color:var(--forge-navy)!important}.home-custom-link strong{color:var(--forge-navy)!important}.home-custom-link span{color:var(--forge-sage-dark)!important}
+.home-ccs-panel{background:linear-gradient(180deg,#0F2D46,#0A2236)!important;border-color:rgba(255,255,255,.14)!important}
+.home-ccs-mini-grid .ccs-module:before{background:linear-gradient(var(--forge-sage-dark),var(--forge-sage))!important}
+.home-ccs-mini-grid .ccs-module:hover{border-color:rgba(138,159,142,.55)!important}
+.ccs-icon{background:rgba(138,159,142,.15)!important;border-color:rgba(138,159,142,.35)!important;color:#B8C9BA!important}
+.home-ccs-mini-grid .ccs-module em{color:#B8C9BA!important}
+.home-ccs-demo-link{background:var(--forge-sage-dark)!important}
+
+/* Homepage shop banner */
+.home-shop-banner{background:linear-gradient(105deg,#617763 0%,#78907A 48%,#8A9F8E 100%)!important}
+.home-shop-kicker:before,.home-shop-banner .shop-main-btn{background:var(--forge-navy)!important;border-color:var(--forge-navy)!important}
+.home-shop-quick a{background:rgba(15,45,70,.92)!important}.home-shop-quick a:hover{background:var(--forge-navy-deep)!important}.home-shop-quick span{color:#D6E0D6!important}
+
+/* Logbook range */
+.logbooks-hero{background:linear-gradient(125deg,#0A2236 0%,#0F2D46 62%,#173A54 100%)!important}
+.logbooks-hero:before{background:radial-gradient(circle at 78% 18%,rgba(138,159,142,.24),transparent 28%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px)!important;background-size:auto,40px 40px,40px 40px!important}
+.logbooks-kicker,.logbooks-hero h1 span,.book b,.book small,.logbook-cover .brand,.logbook-cover small,.logbooks-note strong{color:#B8C9BA!important}
+.logbooks-price-badge{border-color:rgba(138,159,142,.5)!important;background:rgba(138,159,142,.12)!important}.logbooks-price-badge span{color:#D4DFD5!important}
+.book:before,.logbook-cover:before{background:var(--forge-sage-dark)!important}
+.logbooks-strip,.logbooks-strip-inner div{background:var(--forge-sage-dark)!important}.logbooks-strip-inner{background:rgba(255,255,255,.18)!important}
+.logbooks-range{background:var(--forge-ivory)!important}
+.logbook-buy a{background:var(--forge-sage-dark)!important}.logbook-buy a:hover{background:#526A55!important}
+.logbooks-note{background:var(--forge-navy)!important}.logbooks-note a:hover{color:#B8C9BA!important}
+
+/* Pack pages */
+.pack-hero{background:linear-gradient(135deg,var(--forge-ivory),var(--forge-ivory-2))!important;color:var(--forge-navy)!important}.pack-hero p,.pack-price-row span{color:#607482!important}.pack-section{background:var(--forge-ivory)!important}.pack-section.alt{background:var(--forge-ivory-2)!important}.pack-summary{background:var(--forge-navy)!important}.pack-back{color:var(--forge-sage-dark)!important}
+
+/* Shop/card remnants and inline legacy orange borders */
+.shop-hub-section [style*="#ff6a00"],.shop-hub-section [style*="#FF6A00"],.section [style*="#ff6a00"],.section [style*="#FF6A00"]{border-color:var(--forge-sage-dark)!important}
+
+/* Keep body surfaces ivory where older page styles force dark/grey */
+.logbooks-range,.shop-hub-section,.pack-section,.custom-visual-section{background-color:var(--forge-ivory)!important}
