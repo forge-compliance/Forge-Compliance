@@ -16,6 +16,11 @@
   <link rel="icon" href="assets/images/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/home.css?v=5">
+  <style>
+    .home-custom-link{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:.85rem;color:#fff;font-size:.92rem;text-decoration:none}.home-custom-link strong{color:#e7edf3}.home-custom-link span{color:#ff8a34;font-weight:900}.home-custom-link:hover span{text-decoration:underline}
+    .home-ccs-panel{background:linear-gradient(180deg,#0d1721,#111d28);border:1px solid rgba(255,255,255,.1);color:#fff}.home-ccs-panel-head strong{color:#fff}.home-ccs-mini-grid{gap:.75rem}.home-ccs-mini-grid .ccs-module{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:172px;padding:1rem 1rem .9rem;border-radius:16px;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 10px 22px rgba(0,0,0,.12);color:#fff;overflow:hidden;transition:.2s}.home-ccs-mini-grid .ccs-module:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#ff6a00,#ff9a45)}.home-ccs-mini-grid .ccs-module:hover{transform:translateY(-3px);border-color:rgba(255,122,22,.5);box-shadow:0 15px 30px rgba(0,0,0,.2)}.ccs-icon{display:grid;place-items:center;width:36px;height:36px;margin-bottom:.75rem;border-radius:10px;background:rgba(255,106,0,.13);border:1px solid rgba(255,122,22,.28);color:#ff8a34;font-size:1.1rem;font-weight:950}.home-ccs-mini-grid .ccs-module em{font-style:normal;text-transform:uppercase;color:#ff8a34;font-size:.58rem;font-weight:950;letter-spacing:.12em}.home-ccs-mini-grid .ccs-module strong{display:block;margin:.28rem 0 .28rem;font-size:1.03rem;line-height:1.1;color:#fff}.home-ccs-mini-grid .ccs-module small{color:#aebbc8;line-height:1.4}.home-ccs-mini-grid .ccs-module i{margin-top:auto;padding-top:.72rem;font-style:normal;color:#d9e2e9;font-size:.72rem;font-weight:900}.home-ccs-demo-link{background:linear-gradient(135deg,#ff6a00,#ff8420);box-shadow:0 10px 24px rgba(255,106,0,.2)}
+    @media(max-width:620px){.home-custom-link{display:grid;gap:.18rem;padding:.15rem .15rem 0}.home-custom-link span{font-size:.95rem}.home-ccs-mini-grid .ccs-module{min-height:150px;padding:1rem}.home-ccs-panel{padding:.85rem}.home-ccs-panel-head{padding:.35rem .25rem .85rem}}
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -48,6 +53,7 @@
         <h1>Compliance paperwork without <span>starting from scratch.</span></h1>
         <p>Ready-to-edit SOPs, RAMS, risk assessments, COSHH, logs and registers built for real workplaces.</p>
         <a class="home-shop-btn" href="documents.html">Browse the template shop <span>→</span></a>
+        <a class="home-custom-link" href="custom-compliance.html"><strong>Need us to build it for you?</strong><span>Explore custom compliance →</span></a>
       </div>
     </div>
   </section>
@@ -109,12 +115,12 @@
         <div class="home-ccs-panel" aria-label="Forge CCS example modules">
           <div class="home-ccs-panel-head"><span>FORGE CCS</span><strong>One system. Your operation.</strong></div>
           <div class="home-ccs-mini-grid">
-            <div><b>🏭</b><span>Plant Rooms</span><small>Assets, valves & documents</small></div>
-            <div><b>🛠</b><span>PPM</span><small>Schedules & overdue work</small></div>
-            <div><b>🧰</b><span>Maintenance</span><small>Faults, history & actions</small></div>
-            <div><b>🛡</b><span>Compliance</span><small>Evidence & review status</small></div>
-            <div><b>🤝</b><span>Contractors</span><small>Quotes & approvals</small></div>
-            <div><b>£</b><span>Costs</span><small>Committed & actual spend</small></div>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">⌂</span><em>Plant & assets</em><strong>Plant Rooms</strong><small>Valves, pumps, shutdown docs & asset records.</small><i>Explore →</i></a>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">↻</span><em>Planned maintenance</em><strong>PPM</strong><small>Schedules, service records & overdue actions.</small><i>Explore →</i></a>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">＋</span><em>Reactive works</em><strong>Maintenance</strong><small>Fault response, repair history & defect tracking.</small><i>Explore →</i></a>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">✓</span><em>Evidence & review</em><strong>Compliance</strong><small>Audits, statutory records & inspection evidence.</small><i>Explore →</i></a>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">◇</span><em>Contractor control</em><strong>Contractors</strong><small>Permits, RAMS, inductions & approvals.</small><i>Explore →</i></a>
+            <a class="ccs-module" href="demo/"><span class="ccs-icon" aria-hidden="true">£</span><em>Commercial control</em><strong>Costs</strong><small>Quotes, committed spend & actual costs.</small><i>Explore →</i></a>
           </div>
           <a href="demo/" class="home-ccs-demo-link">Open interactive example →</a>
         </div>
