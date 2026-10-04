@@ -45,5 +45,8 @@
 </main>
 
 <footer class="footer custom-footer"><div class="container"><div class="footer-grid footer-grid-simple"><div class="footer-brand"><img class="footer-logo" src="assets/images/forge-logo.png" alt="Forge Compliance"><p>Professional compliance documentation and practical digital systems for organisations across the UK.</p></div><div><h3>Quick links</h3><a href="services.html">Services</a><a href="custom-compliance.html">Custom Compliance</a><a href="let-us-handle-it.html">Let Us Handle It</a><a href="custom-document.html">Custom SOP</a><a href="documents.html">Template shop</a><a href="pricing.html">Pricing</a></div><div><h3>Contact &amp; legal</h3><a href="mailto:hello@forgecompliance.co.uk">hello@forgecompliance.co.uk</a><a href="about.html">About</a><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms &amp; conditions</a></div></div><div class="footer-bottom"><span>© <span data-year></span> Forge Compliance.</span><span>Professional Compliance. Built to Last.</span></div></div></footer>
-<script src="assets/js/script.js"></script>
+<script>
+document.querySelectorAll('a[href^="demo/"],a[href="/demo/"]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag){gtag('event','ccs_demo_open',{link_url:a.href});}});});
+document.querySelectorAll('a[href="contact.html"]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag){gtag('event','contact_intent',{source_page:'custom-compliance'});}});});
+</script><script src="assets/js/script.js"></script>
 </body></html>
