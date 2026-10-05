@@ -74,6 +74,12 @@ html,body{max-width:100%;overflow-x:hidden}
 @media(max-width:900px){
   .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .site-header .logo{width:260px;max-height:62px}
+  .nav-links{gap:0!important;padding:.45rem 1rem .75rem!important}
+  .nav-links a:not(.btn){padding:.52rem .1rem!important;margin:0!important;line-height:1.25;border-bottom:1px solid rgba(112,134,118,.18)}
+  .nav-links a:not(.btn):after{display:none!important}
+  .nav-links .header-custom-sop-link{margin:.4rem 0 .2rem!important;padding:.62rem .8rem!important;border-bottom:0!important}
+  .nav-links .header-basket-link{padding:.55rem .1rem!important;border-bottom:0!important}
+  .nav-links .btn{margin-top:.45rem;padding:.72rem 1rem!important}
 }
 @media(max-width:560px){
   .site-header .header-inner{gap:1rem}
