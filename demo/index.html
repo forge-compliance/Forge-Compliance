@@ -215,12 +215,17 @@ a{color:inherit}
 
 <script>
 const views=[...document.querySelectorAll('.view')];
-function show(id){
- views.forEach(v=>v.classList.toggle('active',v.id===id));
- document.querySelectorAll('.sidebar button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+function show(id,updateHash=true){
+ const target=document.getElementById(id)?id:'dashboard';
+ views.forEach(v=>v.classList.toggle('active',v.id===target));
+ document.querySelectorAll('.sidebar button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===target));
+ if(updateHash && window.location.hash!=='#'+target) history.replaceState(null,'','#'+target);
  window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('.sidebar button[data-view]').forEach(b=>b.onclick=()=>show(b.dataset.view));
+const initialView=window.location.hash.replace('#','');
+if(initialView) show(initialView,false);
+window.addEventListener('hashchange',()=>show(window.location.hash.replace('#','')||'dashboard',false));
 function openAsset(){document.getElementById('assetModal').classList.add('open')}
 function openContact(){document.getElementById('contactModal').classList.add('open')}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
