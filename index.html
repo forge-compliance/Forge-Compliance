@@ -15,13 +15,46 @@
   <meta name="description" content="UK-wide facilities, maintenance and compliance support: SOPs, RAMS, PPM, contractor control, asset systems and custom Forge CCS software.">
   <link rel="icon" href="assets/images/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/home.css?v=6">
+  <link rel="stylesheet" href="assets/css/home.css?v=7">
   <style>
     .home-custom-link{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:.85rem;color:#fff;font-size:.92rem;text-decoration:none}.home-custom-link strong{color:#e7edf3}.home-custom-link span{color:#ff8a34;font-weight:900}.home-custom-link:hover span{text-decoration:underline}
     .home-managed-link{display:inline-flex;align-items:center;gap:.45rem;margin-top:.65rem;color:#173f38;font-size:.94rem;font-weight:900;text-decoration:none}.home-managed-link span{color:#d9651b;font-weight:950}.home-managed-link:hover span{text-decoration:underline}
     .home-ccs-panel{background:linear-gradient(180deg,#0d1721,#111d28);border:1px solid rgba(255,255,255,.1);color:#fff}.home-ccs-panel-head strong{color:#fff}.home-ccs-mini-grid{gap:.75rem}.home-ccs-mini-grid .ccs-module{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:172px;padding:1rem 1rem .9rem;border-radius:16px;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 10px 22px rgba(0,0,0,.12);color:#fff;overflow:hidden;transition:.2s}.home-ccs-mini-grid .ccs-module:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#ff6a00,#ff9a45)}.home-ccs-mini-grid .ccs-module:hover{transform:translateY(-3px);border-color:rgba(255,122,22,.5);box-shadow:0 15px 30px rgba(0,0,0,.2)}.ccs-icon{display:grid;place-items:center;width:36px;height:36px;margin-bottom:.75rem;border-radius:10px;background:rgba(255,106,0,.13);border:1px solid rgba(255,122,22,.28);color:#ff8a34;font-size:1.1rem;font-weight:950}.home-ccs-mini-grid .ccs-module em{font-style:normal;text-transform:uppercase;color:#ff8a34;font-size:.58rem;font-weight:950;letter-spacing:.12em}.home-ccs-mini-grid .ccs-module strong{display:block;margin:.28rem 0 .28rem;font-size:1.03rem;line-height:1.1;color:#fff}.home-ccs-mini-grid .ccs-module small{color:#aebbc8;line-height:1.4}.home-ccs-mini-grid .ccs-module i{margin-top:auto;padding-top:.72rem;font-style:normal;color:#d9e2e9;font-size:.72rem;font-weight:900}.home-ccs-demo-link{background:linear-gradient(135deg,#ff6a00,#ff8420);box-shadow:0 10px 24px rgba(255,106,0,.2)}
     .home-free-fm{padding:1rem 0 0;background:#f6f1e7}.home-free-fm-card{display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:center;padding:1.15rem 1.35rem;border-radius:18px;background:linear-gradient(135deg,#173f38,#285d70);color:#fff;box-shadow:0 16px 36px rgba(19,54,49,.16);text-decoration:none}.home-free-fm-copy{display:flex;gap:1rem;align-items:center}.home-free-fm-badge{display:grid;place-items:center;min-width:68px;height:68px;border-radius:16px;background:#f4f1e7;color:#173f38;font-weight:950;font-size:1rem;letter-spacing:.04em}.home-free-fm-text small{display:block;color:#c7d9d4;font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.2rem}.home-free-fm-text strong{display:block;color:#fff;font-size:1.2rem;line-height:1.15}.home-free-fm-text span{display:block;color:#dce7e4;margin-top:.28rem;font-size:.92rem}.home-free-fm-action{display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1rem;border-radius:12px;background:#f4f1e7;color:#173f38;font-weight:950;white-space:nowrap}.home-free-fm-card:hover .home-free-fm-action{transform:translateX(2px)}
     @media(max-width:620px){.home-custom-link{display:grid;gap:.18rem;padding:.15rem .15rem 0}.home-custom-link span{font-size:.95rem}.home-managed-link{display:grid;grid-template-columns:1fr auto;gap:.35rem;margin-top:.7rem;color:#173f38;font-size:.92rem}.home-managed-link span{color:#d9651b}.home-ccs{padding:1.2rem 0}.home-ccs-shell{padding:.85rem;border-radius:16px}.home-ccs-copy{padding:.1rem}.home-ccs-kicker{margin-bottom:.6rem}.home-ccs h2{font-size:2rem;margin:.05rem 0 .65rem}.home-ccs-lead{font-size:.92rem;line-height:1.45}.home-ccs-features{gap:.38rem;margin:.85rem 0}.home-ccs-actions{gap:.5rem;margin-top:.85rem}.home-ccs-primary,.home-ccs-secondary{padding:.72rem .85rem}.home-ccs-panel{padding:.55rem;border-radius:16px}.home-ccs-panel-head{padding:.3rem .35rem .6rem}.home-ccs-panel-head strong{font-size:1.05rem}.home-ccs-mini-grid{gap:.45rem}.home-ccs-mini-grid .ccs-module{min-height:108px;padding:.72rem .78rem;border-radius:13px}.ccs-icon{width:30px;height:30px;margin-bottom:.42rem;border-radius:8px;font-size:.95rem}.home-ccs-mini-grid .ccs-module em{font-size:.54rem}.home-ccs-mini-grid .ccs-module strong{margin:.18rem 0;font-size:.98rem}.home-ccs-mini-grid .ccs-module small{font-size:.82rem;line-height:1.25}.home-ccs-mini-grid .ccs-module i{padding-top:.45rem;font-size:.68rem}.home-ccs-demo-link{margin-top:.5rem;padding:.72rem}.home-free-fm-card{grid-template-columns:1fr;padding:1rem}.home-free-fm-copy{align-items:flex-start}.home-free-fm-badge{min-width:58px;height:58px}.home-free-fm-action{justify-content:center;width:100%}}
+    .home-hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem}
+    .home-hero-primary,.home-hero-secondary{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:1rem 1.15rem;border-radius:12px;font-weight:900;text-decoration:none}
+    .home-hero-primary{background:linear-gradient(135deg,#ff6a00,#ff8420);color:#fff;box-shadow:0 12px 28px rgba(255,106,0,.24)}
+    .home-hero-secondary{border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.06);color:#fff}
+    .home-hero-shop{display:block;margin-top:.85rem;color:#c5d0db;font-size:.9rem;text-decoration:none}
+    .home-hero-shop strong{color:#fff}.home-hero-shop span{color:#ff8a34;font-weight:900}
+    .home-paths{padding:clamp(2.4rem,5vw,4rem) 0;background:#f6f1e7}
+    .home-paths-head{max-width:680px;margin-bottom:1.2rem}
+    .home-paths-head h2{margin:.3rem 0 .45rem;font-size:clamp(2rem,4vw,3.2rem);line-height:1}
+    .home-paths-head p{margin:0;color:#65727c}
+    .home-path-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .home-path-card{display:flex;flex-direction:column;min-height:220px;padding:1.35rem;border-radius:18px;background:#fff;border:1px solid #dfe5e9;box-shadow:0 10px 28px rgba(18,38,52,.06);text-decoration:none;transition:.2s}
+    .home-path-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(18,38,52,.1)}
+    .home-path-card small{color:#6f817a;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+    .home-path-card h3{margin:.45rem 0 .55rem;color:#10283a;font-size:1.45rem}
+    .home-path-card p{margin:0;color:#68757e;line-height:1.5}
+    .home-path-card b{margin-top:auto;padding-top:1.15rem;color:#173f38}
+    .home-path-card.featured{background:linear-gradient(135deg,#0d1b2a,#17364b);border-color:#17364b}
+    .home-path-card.featured small{color:#ff8a34}.home-path-card.featured h3,.home-path-card.featured b{color:#fff}.home-path-card.featured p{color:#c5d0db}
+    .home-quick{padding:1.25rem 0 2.4rem;background:#f6f1e7}
+    .home-quick-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem}
+    .home-quick-link{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.85rem 1rem;border-radius:12px;background:#fff;border:1px solid #dde4ea;color:#183547;font-weight:850;text-decoration:none}
+    .home-quick-link span{color:#d9651b}
+    .home-demo-strip{padding:2.1rem 0;background:#eef2f5}
+    .home-demo-inner{display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:center}
+    .home-demo-inner h2{margin:0 0 .35rem;font-size:clamp(1.55rem,3vw,2.2rem)}
+    .home-demo-inner p{margin:0;color:#68757e}
+    .home-demo-links{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+    .home-demo-links a{padding:.72rem .9rem;border-radius:10px;background:#fff;border:1px solid #d9e1e7;color:#183547;font-weight:850;text-decoration:none}
+    .home-demo-links a:last-child{background:#173f38;color:#fff;border-color:#173f38}
+    @media(max-width:820px){.home-path-grid{grid-template-columns:1fr}.home-path-card{min-height:0}.home-quick-row{grid-template-columns:1fr 1fr}.home-demo-inner{grid-template-columns:1fr}.home-demo-links{justify-content:flex-start}}
+    @media(max-width:620px){.home-hero-actions{display:grid}.home-hero-primary,.home-hero-secondary{width:100%}.home-quick-row{grid-template-columns:1fr}.home-demo-links{display:grid}.home-demo-links a{text-align:center}}
+
   </style>
 </head>
 <body>
@@ -49,109 +82,81 @@
   <section class="home-hero">
     <div class="container">
       <div class="home-hero-inner">
-        <div class="home-hero-points" aria-label="Shop benefits">
-          <span>UK-wide support</span><span>Facilities & maintenance</span><span>Practical compliance systems</span>
+        <div class="home-hero-points" aria-label="Forge benefits">
+          <span>UK-wide support</span><span>Built around your operation</span><span>Practical, not bloated</span>
         </div>
-        <h1>Facilities, maintenance and compliance support <span>across the UK.</span></h1>
-        <p>Practical UK-wide support for facilities, maintenance, hospitality, care and property teams, from SOPs and RAMS to PPM, asset systems and Forge CCS.</p>
-        <a class="home-shop-btn" href="documents.html">Browse the template shop <span>→</span></a>
-        <a class="home-custom-link" href="custom-compliance.html"><strong>Need us to build it for you?</strong><span>Explore custom compliance →</span></a>
-        <a class="home-managed-link" href="let-us-handle-it.html">Want us to manage the paperwork too? <span>Let us handle it →</span></a>
+        <h1>Compliance that fits <span>the way you work.</span></h1>
+        <p>Forge helps facilities, maintenance, hospitality, care and property teams with practical compliance documents, ongoing support and custom software.</p>
+        <div class="home-hero-actions">
+          <a class="home-hero-primary" href="custom-compliance.html">Explore custom compliance <span>→</span></a>
+          <a class="home-hero-secondary" href="demo/">See the Forge CCS demo <span>→</span></a>
+        </div>
+        <a class="home-hero-shop" href="documents.html"><strong>Need ready-made documents?</strong> <span>Browse the template shop →</span></a>
       </div>
     </div>
   </section>
 
-  <section class="home-free-fm">
+  <section class="home-paths">
     <div class="container">
-      <a class="home-free-fm-card" href="free-fm-starter-pack.html">
-        <div class="home-free-fm-copy">
-          <div class="home-free-fm-badge">FREE</div>
-          <div class="home-free-fm-text">
-            <small>Facilities & maintenance teams</small>
-            <strong>Free Facilities Management Compliance Starter Pack</strong>
-            <span>Plant room checks, contractor compliance, defect logging, risk assessment and monthly compliance review.</span>
-          </div>
-        </div>
-        <div class="home-free-fm-action">Get the free pack <span>→</span></div>
-      </a>
-      <p style="margin:.8rem .2rem 0;text-align:center;font-size:.92rem;color:#31534d">Need more than templates? <a href="facilities-management-compliance.html" style="font-weight:900;color:#173f38">Explore Facilities Management Compliance services →</a></p>
-    </div>
-  </section>
-
-  <section class="home-simple">
-    <div class="container">
-      <div class="home-simple-head reveal">
-        <span class="eyebrow">What you can find</span>
-        <h2>The documents teams actually need.</h2>
+      <div class="home-paths-head reveal">
+        <span class="eyebrow">Start here</span>
+        <h2>Choose what you actually need.</h2>
+        <p>No giant catalogue on the front page. Just the three main ways Forge can help.</p>
       </div>
-      <div class="home-doc-grid home-doc-grid-four">
-        <a class="home-doc-card reveal" href="document-options.html?type=sop"><span class="home-doc-tag">SOP</span><h3>Standard Operating Procedures</h3></a>
-        <a class="home-doc-card reveal" href="document-options.html?type=rams"><span class="home-doc-tag">RAMS</span><h3>RAMS & Risk Assessments</h3></a>
-        <a class="home-doc-card reveal" href="document-options.html?type=records"><span class="home-doc-tag">Records</span><h3>Logs, Registers & COSHH</h3></a>
-        <a class="home-doc-card home-doc-card-logbooks reveal" href="logbooks.html"><span class="home-doc-tag">NEW</span><h3>Compliance Logbooks</h3></a>
+      <div class="home-path-grid">
+        <a class="home-path-card reveal" href="custom-compliance.html">
+          <small>Bespoke documents & systems</small>
+          <h3>Custom Compliance</h3>
+          <p>SOPs, RAMS, registers, inspection records and site-specific compliance documents built around your operation.</p>
+          <b>Explore custom compliance →</b>
+        </a>
+        <a class="home-path-card featured reveal" href="forge-ccs.html">
+          <small>Custom Compliance Software</small>
+          <h3>Forge CCS</h3>
+          <p>Assets, PPM, maintenance, contractors, evidence and costs in one system designed around the way your team works.</p>
+          <b>Explore Forge CCS →</b>
+        </a>
+        <a class="home-path-card reveal" href="let-us-handle-it.html">
+          <small>Ongoing support</small>
+          <h3>Let Us Handle It</h3>
+          <p>For teams that want the paperwork, records and recurring compliance admin managed rather than added to another to-do list.</p>
+          <b>See managed support →</b>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="home-logbooks">
+  <section class="home-quick">
     <div class="container">
-      <a class="home-logbooks-shell reveal" href="logbooks.html">
-        <div class="home-logbooks-copy">
-          <span class="home-logbooks-kicker">NEW · FORGE LOGBOOK RANGE</span>
-          <h2>More than a blank form.</h2>
-          <p>Each 15-page editable logbook combines a clear description, task risk assessment, relevant SOP and 10 reusable record sheets in one working pack.</p>
-          <div class="home-logbooks-features"><span>15-page templates</span><span>Risk assessment</span><span>SOP included</span><span>10 record sheets</span></div>
-          <div class="home-logbooks-action"><strong>£29 each</strong><span>Explore the logbooks →</span></div>
-        </div>
-        <div class="home-logbooks-books" aria-hidden="true">
-          <div class="mini-book mb1"><b>FORGE</b><span>FIRE DOOR<br>INSPECTION</span><small>LOGBOOK</small></div>
-          <div class="mini-book mb2"><b>FORGE</b><span>EMERGENCY<br>LIGHTING</span><small>LOGBOOK</small></div>
-          <div class="mini-book mb3"><b>FORGE</b><span>PPM<br>COMPLETION</span><small>LOGBOOK</small></div>
-        </div>
-      </a>
+      <div class="home-quick-row">
+        <a class="home-quick-link" href="documents.html">Template Shop <span>→</span></a>
+        <a class="home-quick-link" href="logbooks.html">Compliance Logbooks <span>→</span></a>
+        <a class="home-quick-link" href="free-fm-starter-pack.html">Free FM Starter Pack <span>→</span></a>
+        <a class="home-quick-link" href="sectors.html">Who We Help <span>→</span></a>
+      </div>
     </div>
   </section>
 
-  <section class="home-ccs">
-    <div class="container">
-      <div class="home-ccs-shell reveal">
-        <div class="home-ccs-copy">
-          <div class="home-ccs-kicker"><span>FORGE CCS</span><b>Custom Compliance Software</b></div>
-          <h2>When documents alone are not enough.</h2>
-          <p class="home-ccs-lead">Forge CCS turns the paperwork into a live working system built around your actual site, equipment and team. Assets, plant rooms, valves, PPM, maintenance, contractors, compliance evidence and costs can all sit in one practical place.</p>
-          <div class="home-ccs-features">
-            <span>Asset & plant registers</span>
-            <span>PPM & maintenance workflows</span>
-            <span>Valve & isolation records</span>
-            <span>Compliance evidence</span>
-            <span>Contractor & quote tracking</span>
-            <span>Site-specific dashboards</span>
-          </div>
-          <div class="home-ccs-actions">
-            <a class="home-ccs-primary" href="demo/">Explore the live CCS demo <span>→</span></a>
-            <a class="home-ccs-secondary" href="forge-ccs.html">See the full Forge CCS platform</a>
-          </div>
-        </div>
-        <div class="home-ccs-panel" aria-label="Forge CCS example modules">
-          <div class="home-ccs-panel-head"><span>FORGE CCS</span><strong>One system. Your operation.</strong></div>
-          <div class="home-ccs-mini-grid">
-            <a class="ccs-module" href="demo/#plant"><span class="ccs-icon" aria-hidden="true">⌂</span><em>Plant & assets</em><strong>Plant Rooms</strong><small>Valves, pumps, shutdown docs & asset records.</small><i>Explore →</i></a>
-            <a class="ccs-module" href="demo/#ppm"><span class="ccs-icon" aria-hidden="true">↻</span><em>Planned maintenance</em><strong>PPM</strong><small>Schedules, service records & overdue actions.</small><i>Explore →</i></a>
-            <a class="ccs-module" href="demo/#maintenance"><span class="ccs-icon" aria-hidden="true">＋</span><em>Reactive works</em><strong>Maintenance</strong><small>Fault response, repair history & defect tracking.</small><i>Explore →</i></a>
-            <a class="ccs-module" href="demo/#compliance"><span class="ccs-icon" aria-hidden="true">✓</span><em>Evidence & review</em><strong>Compliance</strong><small>Audits, statutory records & inspection evidence.</small><i>Explore →</i></a>
-            <a class="ccs-module" href="demo/#contractors"><span class="ccs-icon" aria-hidden="true">◇</span><em>Contractor control</em><strong>Contractors</strong><small>Permits, RAMS, inductions & approvals.</small><i>Explore →</i></a>
-            <a class="ccs-module" href="demo/#finance"><span class="ccs-icon" aria-hidden="true">£</span><em>Commercial control</em><strong>Costs</strong><small>Quotes, committed spend & actual costs.</small><i>Explore →</i></a>
-          </div>
-          <a href="demo/" class="home-ccs-demo-link">Open interactive example →</a>
-        </div>
+  <section class="home-demo-strip">
+    <div class="container home-demo-inner">
+      <div>
+        <span class="eyebrow">Interactive example</span>
+        <h2>See how Forge CCS works.</h2>
+        <p>Jump straight into the parts people usually want to see rather than wandering around a generic demo homepage.</p>
+      </div>
+      <div class="home-demo-links">
+        <a href="demo/#ppm">PPM</a>
+        <a href="demo/#maintenance">Maintenance</a>
+        <a href="demo/#compliance">Compliance</a>
+        <a href="demo/">Open full demo →</a>
       </div>
     </div>
   </section>
 
   <section class="home-cta">
     <div class="container home-cta-inner">
-      <div><h2>Need something site-specific?</h2><p>From bespoke documents to a complete Forge CCS build around your operation.</p></div>
-      <a href="custom-compliance.html">Explore custom compliance →</a>
+      <div><h2>Not sure which route fits?</h2><p>Tell us what is currently a pain to manage and we’ll keep the solution proportionate.</p></div>
+      <a href="contact.html">Talk to Forge →</a>
     </div>
   </section>
 </main>
