@@ -408,3 +408,19 @@
 .home-hero-sop .home-sop-offer-action{display:flex;justify-content:space-between;align-items:center;width:100%}
 @media(min-width:901px){.home-hero-inner{max-width:58%}}
 @media(max-width:900px){.home-hero-sop{position:static;transform:none;width:100%;margin:1.25rem 0 0}.home-hero-inner{max-width:none}}
+
+
+/* Compact custom SOP hero card and reserve desktop space */
+@media(min-width:901px){
+  .home-hero .home-hero-inner{max-width:none;padding-right:470px}
+  .home-hero-sop{width:410px;right:0}
+}
+@media(max-width:620px){
+  .home-hero-sop{margin-top:.85rem;padding:.95rem 1rem;border-radius:16px}
+  .home-hero-sop .home-sop-offer-kicker{margin-bottom:.15rem;font-size:.62rem;letter-spacing:.09em}
+  .home-hero-sop-price{align-items:center;margin:.35rem 0;gap:.7rem}
+  .home-hero-sop-price small{font-size:1.05rem;line-height:1.1}
+  .home-hero-sop-price strong{font-size:2.35rem}
+  .home-hero-sop p{margin:.45rem 0 .7rem!important;font-size:.86rem!important;line-height:1.35!important}
+  .home-hero-sop .home-sop-offer-action{padding:.68rem .8rem;border-radius:10px;font-size:.9rem}
+}
