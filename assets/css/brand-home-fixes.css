@@ -32,7 +32,7 @@
 .pack-back{color:var(--forge-sage-dark)!important}
 
 /* Shop custom-SOP card: replace legacy orange and stop the mobile two-column squeeze. */
-.shop-hub-section [style*="#ff6a00"]{border-color:var(--forge-sage-dark)!important;background:#F4F6F1!important}
+.shop-hub-section [style*="#657f6a"]{border-color:var(--forge-sage-dark)!important;background:#F4F6F1!important}
 .shop-hub-section [style*="#fff7ef"]{background:#F4F6F1!important}
 @media(max-width:700px){
   .shop-hub-section [style*="grid-template-columns:1fr auto"]{display:block!important;padding:1.1rem!important}
