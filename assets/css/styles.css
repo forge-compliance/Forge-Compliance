@@ -396,3 +396,15 @@
 .home-sop-offer-card p{max-width:720px;margin:.55rem 0 0;color:#dce5e2;line-height:1.5}
 .home-sop-offer-action{flex:0 0 auto;padding:.9rem 1.05rem;border-radius:12px;background:#8a9f8e;color:#fff;font-weight:900;white-space:nowrap}
 @media(max-width:700px){.home-sop-offer-card{display:grid;gap:1rem;padding:1.25rem}.home-sop-offer-action{display:flex;justify-content:space-between;width:100%}}
+
+/* Use hero's spare desktop column for the Custom SOP offer */
+.home-hero .container{position:relative}
+.home-hero-sop{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(36%,430px);display:block;padding:1.65rem;border-radius:22px;background:linear-gradient(145deg,#0f2d46,#173f38);border:1px solid rgba(138,159,142,.5);box-shadow:0 22px 48px rgba(15,45,70,.18);color:#fff;text-decoration:none}
+.home-hero-sop .home-sop-offer-kicker{color:#c9d7ce}
+.home-hero-sop-price{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin:.65rem 0}
+.home-hero-sop-price small{font-size:1.35rem;font-weight:900;color:#fff}
+.home-hero-sop-price strong{font-size:3.4rem;line-height:1;color:#f7f6f2}
+.home-hero-sop p{margin:.7rem 0 1.2rem!important;color:#dce5e2!important;font-size:1rem!important;line-height:1.5}
+.home-hero-sop .home-sop-offer-action{display:flex;justify-content:space-between;align-items:center;width:100%}
+@media(min-width:901px){.home-hero-inner{max-width:58%}}
+@media(max-width:900px){.home-hero-sop{position:static;transform:none;width:100%;margin:1.25rem 0 0}.home-hero-inner{max-width:none}}
