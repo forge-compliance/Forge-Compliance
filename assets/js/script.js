@@ -33,15 +33,6 @@ if(favicon)favicon.href='assets/images/favicon.svg?v=2';
 if(nav){
   nav.querySelectorAll('a[href="logbooks.html"]').forEach(link=>link.remove());
 }
-if(nav&&!nav.querySelector('.header-custom-sop-link')){
-  const custom=document.createElement('a');
-  custom.className='header-custom-sop-link';
-  custom.href='custom-document.html';
-  custom.textContent='Custom SOP £69';
-  const shop=nav.querySelector('a[href="documents.html"]');
-  if(shop&&shop.nextSibling)nav.insertBefore(custom,shop.nextSibling);else nav.appendChild(custom);
-}
-
 if(nav&&!nav.querySelector('.header-basket-link')){
   const basket=document.createElement('a');
   basket.className='header-basket-link';
