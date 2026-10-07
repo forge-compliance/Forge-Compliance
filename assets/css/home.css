@@ -12,3 +12,14 @@
   .home-hero-inner{display:block}
   .home-hero-right{display:block}
 }
+
+/* Benefit badges span the full hero width */
+@media(min-width:901px){
+  .home-hero-inner{grid-template-rows:auto auto}
+  .home-hero-points{grid-column:1 / -1;grid-row:1;justify-content:flex-start;overflow:visible;margin-bottom:.15rem}
+  .home-hero-copy{grid-column:1;grid-row:2}
+  .home-hero-right{grid-column:2;grid-row:2}
+}
+@media(max-width:900px){
+  .home-hero-points{width:100%;overflow:hidden}
+}
