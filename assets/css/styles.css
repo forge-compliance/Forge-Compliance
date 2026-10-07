@@ -434,3 +434,12 @@
   .home-hero-sop p{margin:.45rem 0 .7rem!important;font-size:.86rem!important;line-height:1.35!important}
   .home-hero-sop .home-sop-offer-action{padding:.68rem .8rem;border-radius:10px;font-size:.9rem}
 }
+
+/* Reset old absolute hero artwork/card positioning now that hero has a real right column */
+@media(min-width:901px){
+  .home-hero .home-hero-inner{padding-right:0!important}
+  .home-hero-art{display:block!important;position:static!important;right:auto!important;top:auto!important;width:100%!important;z-index:auto!important;pointer-events:none}
+  .home-hero-art img{width:100%!important;max-height:300px;object-fit:contain;background:#f7f6f2}
+  .home-hero-sop{position:static!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;padding:1.2rem!important}
+  .home-hero-sop-price strong{font-size:2.7rem}
+}
