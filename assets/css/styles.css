@@ -475,3 +475,9 @@
   input,select,textarea{padding:.78rem .85rem;margin:.3rem 0 .8rem}
   textarea{min-height:125px}
 }
+
+
+/* Site-wide section dividers: make background changes deliberate */
+main > section + section{border-top:4px solid #173f38}
+main > section + section[style*="background"]{border-top-color:#173f38}
+@media(max-width:700px){main > section + section{border-top-width:3px}}
