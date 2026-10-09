@@ -91,6 +91,20 @@
   .home-path-card h3,.home-path-card.featured h3{display:inline-flex;align-items:center;width:auto;max-width:calc(100% - .5rem);box-sizing:border-box;margin:.42rem 0 .22rem!important;padding:.48rem .72rem;border-radius:9px;background:#fff!important;border:1px solid #cbd8d2;box-shadow:0 4px 12px rgba(18,38,52,.08);color:#10283a!important;font-size:1.22rem!important;line-height:1.1;white-space:normal}
   .home-cta{padding:1.5rem 0;border-top:4px solid #173f38}
 }
+
+    /* Accessible secondary actions and systems-led homepage */
+    .home-hero-actions-stack .home-hero-secondary{color:#173f38;background:#fff;border:1px solid #b9c9bf;box-shadow:0 3px 12px rgba(16,40,58,.07)}
+    .home-hero-actions-stack .home-hero-secondary:hover{background:#eaf0eb}
+    .home-systems-showcase{padding:1.7rem;border-radius:22px;background:linear-gradient(145deg,#102c3b,#174a45);color:#fff;box-shadow:0 18px 38px rgba(16,40,58,.18)}
+    .home-systems-showcase .eyebrow{color:#b5d3c3;font-size:.72rem}
+    .home-systems-showcase h2{color:#fff;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.08;margin:.65rem 0}
+    .home-systems-showcase p{color:#e4eee9;font-size:1rem;line-height:1.5}
+    .home-system-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1.3rem 0}
+    .home-system-tiles span{padding:.85rem .65rem;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(255,255,255,.09);font-size:.86rem;font-weight:800;color:#fff}
+    .home-systems-showcase>a{display:block;padding:.9rem 1rem;text-align:center;border-radius:10px;background:#dce9dd;color:#153c34;font-weight:900;text-decoration:none}
+    .home-paths-head{max-width:100%}
+    .home-paths-head h2{overflow-wrap:break-word;line-height:1.12}
+    @media(max-width:620px){.home-hero-actions-stack .home-hero-secondary{width:100%!important;color:#173f38!important;background:#fff!important;border:1px solid #b9c9bf!important;padding:.75rem .85rem!important;font-size:.85rem!important}.home-hero-right{display:block!important;margin-top:1.1rem}.home-systems-showcase{padding:1.15rem;border-radius:16px}.home-systems-showcase h2{font-size:1.6rem}.home-systems-showcase p{font-size:.9rem}.home-system-tiles span{font-size:.78rem;padding:.7rem .55rem}.home-paths-head h2{font-size:clamp(1.55rem,7vw,2rem);line-height:1.14}}
 </style>
   <link rel="canonical" href="https://forgecompliance.co.uk/">
 </head>
@@ -132,13 +146,13 @@
           </div>
         </div>
         <div class="home-hero-right">
-          <div class="home-hero-art" aria-hidden="true"><img src="assets/images/forge-home-artwork.webp" alt=""></div>
-          <a class="home-hero-sop" href="custom-document.html">
-            <span class="home-sop-offer-kicker">One document. Built for your business.</span>
-            <div class="home-hero-sop-price"><small>Custom SOP</small><strong>£39.99</strong></div>
-            <p>Professionally written around your equipment, process and team. No generic template pretending every workplace is identical.</p>
-            <span class="home-sop-offer-action">Get your custom SOP <b>→</b></span>
-          </a>
+          <div class="home-systems-showcase">
+            <span class="eyebrow">BUILT FOR YOUR WORKFLOW</span>
+            <h2>One system. Your way.</h2>
+            <p>Bring your jobs, assets, planned maintenance and compliance records together.</p>
+            <div class="home-system-tiles"><span>Job management</span><span>Asset registers</span><span>Planned maintenance</span><span>Compliance tracking</span></div>
+            <a href="demo/">Explore the live demo →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -148,7 +162,7 @@
     <div class="container">
       <div class="home-paths-head reveal">
         <span class="eyebrow">Start here</span>
-        <h2>Better systems. Less admin.</h2>
+        <h2>Software that fits your business.</h2>
         <p>Start with software designed for your team. Need documentation or someone to handle ongoing compliance too? We cover that as well.</p>
       </div>
       <div class="home-path-grid">
