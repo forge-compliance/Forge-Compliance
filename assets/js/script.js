@@ -33,25 +33,7 @@ if(favicon)favicon.href='assets/images/favicon.svg?v=2';
 if(nav){
   nav.querySelectorAll('a[href="logbooks.html"]').forEach(link=>link.remove());
 }
-if(nav&&!nav.querySelector('.header-basket-link')){
-  const basket=document.createElement('a');
-  basket.className='header-basket-link';
-  basket.href='catalogue.html?basket=open';
-  basket.innerHTML='🛒 Basket <span class="header-basket-count">0</span>';
-  const quote=nav.querySelector('.btn');
-  if(quote)nav.insertBefore(basket,quote);else nav.appendChild(basket);
-  const refreshBasketCount=()=>{try{const items=JSON.parse(localStorage.getItem('forgeCartV1')||'[]')||[];basket.querySelector('.header-basket-count').textContent=String(items.length)}catch{basket.querySelector('.header-basket-count').textContent='0'}};
-  refreshBasketCount();
-  window.addEventListener('storage',refreshBasketCount);
-  window.addEventListener('forge:cart-updated',refreshBasketCount);
-}
-
-if(!document.querySelector('link[href*="assets/css/cart.css"]')){
-  const cartCss=document.createElement('link');cartCss.rel='stylesheet';cartCss.href='assets/css/cart.css?v=6';document.head.appendChild(cartCss);
-}
-if(!window.__forgeCartLoaded&&!document.querySelector('script[src*="assets/js/cart.js"]')){
-  const cartScript=document.createElement('script');cartScript.src='assets/js/cart.js?v=6';cartScript.defer=true;document.body.appendChild(cartScript);
-}
+// Online basket retired. Forge now accepts quotation enquiries only.
 
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
 
