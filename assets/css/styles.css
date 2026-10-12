@@ -481,3 +481,10 @@
 main > section + section{border-top:4px solid #173f38}
 main > section + section[style*="background"]{border-top-color:#173f38}
 @media(max-width:700px){main > section + section{border-top-width:3px}}
+
+/* Forge Digital Systems: authoritative shared header theme */
+.site-header{background:#071a28!important;background-color:#071a28!important;background-image:none!important;border-bottom:1px solid rgba(255,255,255,.16)!important}
+.site-header .nav-links a:not(.btn){color:#f1f7fa!important}
+.site-header .nav-links a[aria-current="page"]{color:#91ee35!important}
+.site-header .nav-links .btn{background:#91ee35!important;color:#071a28!important}
+@media(max-width:900px){.site-header .nav-links{background:#071a28!important}.site-header .nav-links a:not(.btn){color:#f1f7fa!important}}
