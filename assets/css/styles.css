@@ -488,3 +488,15 @@ main > section + section[style*="background"]{border-top-color:#173f38}
 .site-header .nav-links a[aria-current="page"]{color:#91ee35!important}
 .site-header .nav-links .btn{background:#91ee35!important;color:#071a28!important}
 @media(max-width:900px){.site-header .nav-links{background:#071a28!important}.site-header .nav-links a:not(.btn){color:#f1f7fa!important}}
+
+/* FDS global palette, shared source of truth */
+:root{--fds-navy:#071a28;--fds-lime:#91ee35}
+body{background:#0d2637;color:#eaf3f5}
+.page-hero,main .page-hero,body main section.page-hero{background:#0b2839!important;background-image:linear-gradient(120deg,#0b2839,#174657)!important;color:#fff!important}
+.page-hero h1,.page-hero h2,.page-hero p,.page-hero .prose,.page-hero .container>p{color:#fff!important;opacity:1!important}
+.page-hero .eyebrow{color:#91ee35!important}
+main .section,main .band,main .service-band,main .services-intro,main .forge-section,main .forge-section-alt{background:#0d2637!important;color:#eaf3f5!important}
+main .section h2,main .section h3,main .section p,main .band h2,main .band p{color:#eaf3f5!important}
+main .card,main .service-item{background:#143348!important;color:#eaf3f5!important;border-color:#ffffff22!important}
+main .card h3,main .card p,main .service-item h3,main .service-item p{color:#eaf3f5!important}
+main > section + section{border-top-color:#91ee3540!important}
