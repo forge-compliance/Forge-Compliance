@@ -43,7 +43,20 @@ body{background:var(--sv-deep);color:var(--sv-text)}
 <article class="sv-card"><h3>Coordinate teams</h3><p>Make it easier for departments to follow up and keep work moving.</p></article>
 <article class="sv-card"><h3>Track progress</h3><p>See what's outstanding, what's underway and what's been completed.</p></article>
 </div></div></section>
-<section class="sv-section alt"><div class="sv-wrap"><span class="sv-label">Inside the platform</span><h2>See Servelle's in action</h2><p>We'll show the real working screens here: the overview, request management and department workflow.</p><div class="sv-preview"><strong>Platform screenshots being prepared</strong><p>Space reserved for genuine Servelle's screenshots, not made-up dashboard artwork.</p></div></div></section>
+<section class="sv-section alt"><div class="sv-wrap"><span class="sv-label">Inside the platform</span><h2>See Servelle's in action</h2><p>We'll show the real working screens here: the overview, request management and department workflow.</p><div class="sv-preview" id="sv-video-slot"><strong>Servelle's promotional video</strong><p>The video will be available here once its media file is published.</p></div>
+<script>
+(function(){
+const slot=document.getElementById('sv-video-slot'),url='assets/video/servelles-promo.mp4';
+fetch(url,{method:'HEAD'}).then(response=>{
+if(!response.ok||!String(response.headers.get('content-type')||'').includes('video'))return;
+slot.textContent='';
+const player=document.createElement('video');player.controls=true;player.preload='metadata';player.playsInline=true;
+player.style.cssText='display:block;width:100%;max-height:620px;border-radius:14px;background:#071a28';
+player.setAttribute('aria-label','Servelles promotional video');
+const source=document.createElement('source');source.src=url;source.type='video/mp4';player.appendChild(source);slot.appendChild(player);
+}).catch(()=>{});
+})();
+</script></div></section>
 <section class="sv-cta"><div class="sv-wrap"><span class="sv-label">For hotels and hospitality teams</span><h2 style="color:white">Want a closer look?</h2><p>See how Servelle's could fit the way your team works.</p><a class="sv-button" href="contact.html">Discuss Servelle's →</a></div></section>
 </main><footer class="sv-footer"><a href="index.html">Forge Digital Systems</a> · <a href="forge-ccs.html">Our Systems</a> · <a href="privacy.html">Privacy</a></footer>
 </body></html>
