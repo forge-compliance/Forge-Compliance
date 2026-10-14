@@ -56,12 +56,18 @@ html{scroll-behavior:smooth}body{margin:0;background:var(--a-bg);color:var(--a-t
 </main>
 <footer class="am-footer"><div class="am-wrap"><span>© Forge Digital Systems · New Forest based, UK-wide</span><span><a href="index.html">Home</a> · <a href="forge-ccs.html">Our Systems</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 <script>
-document.querySelectorAll('[data-art]').forEach(function(holder){
-const img=new Image();const file=holder.dataset.art;
+document.querySelectorAll('[data-art]').forEach(function(holder,index){
+const img=document.createElement('img');
+const file=holder.dataset.art;
 img.alt='Illustrative Forge asset management dashboard: '+file.replaceAll('-',' ').replace('.jpg','');
-img.loading='lazy';
-img.onload=function(){holder.textContent='';holder.appendChild(img);};
-img.src='assets/images/'+file;
+img.loading=index===0?'eager':'lazy';
+img.decoding='async';
+img.onerror=function(){
+holder.innerHTML='<div class="am-placeholder"><strong>Artwork unavailable</strong><small>Please refresh to retry loading the dashboard image.</small></div>';
+};
+holder.textContent='';
+holder.appendChild(img);
+img.src='assets/images/'+encodeURIComponent(file);
 });
 </script>
 </body></html>
