@@ -60,22 +60,41 @@ const source=document.createElement('source');source.src=url;source.type='video/
 <section class="sv-section" id="servelles-screenshots"><div class="sv-wrap"><span class="sv-label">Inside Servelle's</span><h2>How it works, on screen</h2><p>A few frames from the Servelle's demonstration, showing the approach to guest requests and team coordination.</p><div id="sv-gallery" class="sv-cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))"></div></div></section>
 <script>
 (function(){
-const items=[
-['incoming-requests.jpg','Guest service without the gaps','Keep guest requests visible and create a clear route from request to action.'],
-['room-service.jpg','The right team gets it','Route service requests to the appropriate department and keep them accountable.'],
-['department-routing.jpg','Guest messaging concept','An example of the guest messaging experience presented in the demo.']
+const scenes=[
+{time:3.5,title:'Guest requests',caption:'Guests can make a request without chasing down a member of the team.'},
+{time:8.5,title:'The service dashboard',caption:'Staff can see incoming requests and what needs attention.'},
+{time:13,title:'Request details',caption:'Open a request to check the details and organise the next action.'}
 ];
 const gallery=document.getElementById('sv-gallery');
-items.forEach(function(item){
-const fig=document.createElement('figure');fig.className='sv-card';fig.style.margin='0';
-const img=document.createElement('img');img.src='assets/images/'+item[0];
-img.style.cssText='width:100%;display:block;border-radius:10px;margin-bottom:16px';
-img.loading='lazy';img.alt=item[1]+' illustration from the Servelle\'s demo';
-img.onerror=function(){fig.remove();};
-const h=document.createElement('h3');h.textContent=item[1];
-const p=document.createElement('p');p.textContent=item[2];
-fig.append(img,h,p);gallery.appendChild(fig);
+const video=document.createElement('video');
+video.src='assets/video/Servelles_Promo_No_Watermark-1.mp4';
+video.preload='auto';video.muted=true;video.playsInline=true;
+video.style.display='none';gallery.appendChild(video);
+const frames=scenes.map(scene=>{
+  const fig=document.createElement('figure');fig.className='sv-card';fig.style.margin='0';
+  const img=document.createElement('img');
+  img.alt=scene.title+" — still from the Servelle's promotional video";
+  img.style.cssText='display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:16px;background:#071a28';
+  const h=document.createElement('h3');h.textContent=scene.title;
+  const p=document.createElement('p');p.textContent=scene.caption;
+  fig.append(img,h,p);gallery.appendChild(fig);return img;
 });
+let index=0;
+function seekNext(){
+  if(index>=scenes.length){video.remove();return;}
+  video.currentTime=scenes[index].time;
+}
+video.addEventListener('loadedmetadata',seekNext,{once:true});
+video.addEventListener('seeked',()=>{
+  try{
+    const canvas=document.createElement('canvas');
+    canvas.width=960;canvas.height=Math.round(960*video.videoHeight/video.videoWidth);
+    canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
+    frames[index].src=canvas.toDataURL('image/jpeg',.83);
+  }catch(e){frames[index].alt='Preview unavailable; watch the video above';}
+  index++;seekNext();
+});
+video.addEventListener('error',()=>{gallery.querySelectorAll('figure').forEach(f=>f.remove());video.remove();});
 })();
 </script>
 <section class="sv-cta"><div class="sv-wrap"><span class="sv-label">For hotels and hospitality teams</span><h2 style="color:white">Want a closer look?</h2><p>See how Servelle's could fit the way your team works.</p><a class="sv-button" href="contact.html">Discuss Servelle's →</a></div></section>
