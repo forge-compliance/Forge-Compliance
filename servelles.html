@@ -57,25 +57,24 @@ const source=document.createElement('source');source.src=url;source.type='video/
 }).catch(()=>{});
 })();
 </script></div></section>
-<section class="sv-section" id="servelles-screenshots"><div class="sv-wrap"><span class="sv-label">Inside Servelle's</span><h2>How it works, on screen</h2><p>A look at the real platform, from receiving requests to keeping teams informed.</p><div id="sv-gallery" class="sv-cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))"></div></div></section>
+<section class="sv-section" id="servelles-screenshots"><div class="sv-wrap"><span class="sv-label">Inside Servelle's</span><h2>How it works, on screen</h2><p>A few frames from the Servelle's demonstration, showing the approach to guest requests and team coordination.</p><div id="sv-gallery" class="sv-cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))"></div></div></section>
 <script>
 (function(){
 const items=[
-['dashboard.jpg','The live overview','See new, active and completed requests at a glance.'],
-['incoming-requests.jpg','Incoming requests','Review guest requests and choose the next action.'],
-['department-routing.jpg','Route to the right team','Transfer a request to the department best placed to handle it.'],
-['room-service.jpg','Room-service progress','Follow an order from receipt through to delivery.']
+['incoming-requests.jpg','Guest service without the gaps','Keep guest requests visible and create a clear route from request to action.'],
+['room-service.jpg','The right team gets it','Route service requests to the appropriate department and keep them accountable.'],
+['department-routing.jpg','Guest messaging concept','An example of the guest messaging experience presented in the demo.']
 ];
 const gallery=document.getElementById('sv-gallery');
 items.forEach(function(item){
-const img=new Image();const src='assets/images/'+item[0];
-img.onload=function(){
 const fig=document.createElement('figure');fig.className='sv-card';fig.style.margin='0';
-img.style.cssText='width:100%;display:block;border-radius:10px;margin-bottom:16px';img.alt=item[1]+' shown in Servelles';
+const img=document.createElement('img');img.src='assets/images/'+item[0];
+img.style.cssText='width:100%;display:block;border-radius:10px;margin-bottom:16px';
+img.loading='lazy';img.alt=item[1]+' illustration from the Servelle\'s demo';
+img.onerror=function(){fig.remove();};
 const h=document.createElement('h3');h.textContent=item[1];
 const p=document.createElement('p');p.textContent=item[2];
 fig.append(img,h,p);gallery.appendChild(fig);
-};img.src=src;
 });
 })();
 </script>
