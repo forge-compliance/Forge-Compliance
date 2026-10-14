@@ -61,7 +61,7 @@ const img=new Image();const file=holder.dataset.art;
 img.alt='Illustrative Forge asset management dashboard: '+file.replaceAll('-',' ').replace('.jpg','');
 img.loading='lazy';
 img.onload=function(){holder.textContent='';holder.appendChild(img);};
-img.src='assets/images/asset-management/'+file;
+img.src='assets/images/'+file;
 });
 </script>
 </body></html>
