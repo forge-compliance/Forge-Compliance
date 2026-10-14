@@ -46,7 +46,7 @@ body{background:var(--sv-deep);color:var(--sv-text)}
 <section class="sv-section alt"><div class="sv-wrap"><span class="sv-label">Inside the platform</span><h2>See Servelle's in action</h2><p>We'll show the real working screens here: the overview, request management and department workflow.</p><div class="sv-preview" id="sv-video-slot"><strong>Servelle's promotional video</strong><p>The video will be available here once its media file is published.</p></div>
 <script>
 (function(){
-const slot=document.getElementById('sv-video-slot'),url='assets/video/servelles-promo.mp4';
+const slot=document.getElementById('sv-video-slot'),url='assets/video/Servelles_Promo_No_Watermark-1.mp4';
 fetch(url,{method:'HEAD'}).then(response=>{
 if(!response.ok||!String(response.headers.get('content-type')||'').includes('video'))return;
 slot.textContent='';
