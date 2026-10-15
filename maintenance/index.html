@@ -11,6 +11,33 @@ main{max-width:1400px}.stats{margin:12px 0;gap:9px}.stat{padding:10px 15px}.stat
 .job-table .tag{white-space:nowrap}
 .job-table button{font-size:12px;padding:6px 9px}
 @media(max-width:700px){.job-table{min-width:860px}.job-table td{padding:8px 6px}.stat{padding:9px}}
+
+/* Forge brand theme, separate from the original Limewood palette */
+:root{color:#122d3d;background:#eff5fa}
+header{background:linear-gradient(110deg,#102f50 0%,#146b82 65%,#1ba584 100%)}
+header a{color:#d6f9f4!important}
+h1,h2{color:#173955}
+header strong{color:white}
+p,.sub{color:#61798a}
+button{background:#087c89;color:white}
+button:hover{background:#075c75}
+.secondary{background:#def3f4;color:#08717c}
+.secondary:hover{background:#c7e9eb}
+.stat,.panel,.jobs{border-color:#d7e5ed}
+.stat strong{color:#087f90}
+.note{background:#e9f5fb;border-color:#cbdfea;color:#31566d}
+input,select,textarea{border-color:#c4d8e5}
+input:focus,select:focus,textarea:focus{outline:2px solid #20a69d;outline-offset:1px}
+.job-table th{background:#d9eaf3;color:#153b58;border-bottom-color:#a9cfdb}
+.job-table td{border-bottom-color:#e1edf2}
+.job-table tr:nth-child(even) td{background:#f5f9fc}
+.job-table tr:hover td{background:#e7f5f8}
+.job-table .issue{color:#183d56}
+.job-table button{background:#0b8492;color:#fff;white-space:nowrap}
+.job-table button:hover{background:#086575}
+.tag{background:#e1f0f5;color:#225875}
+.dialog{background:#071d32ba}
+#secured .lead a{background:#d5f2ef!important;color:#086d7d!important}
 </style></head><body>
 <header><div><strong>FORGE · Maintenance</strong><small>Job management prototype</small></div><a href="/" style="color:#dcf4e3">Forge homepage</a></header><main><div id="serviceNotice" class="note">Secure cloud database connection. Sign in to view and report maintenance jobs.</div><section id="loginBox" class="panel"><h2>Staff sign in</h2><form id="loginForm"><label>Email<input id="loginEmail" type="email" required autocomplete="username"></label><label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label><p id="loginErr" class="sub"></p><label style="display:flex;align-items:center;gap:8px;margin:13px 0"><input id="rememberSession" type="checkbox" style="width:18px;height:18px" checked>Keep me signed in on this device</label><button type="submit">Sign in</button></form></section><div id="secured" hidden><div class="lead"><div><h1>Maintenance dashboard</h1><p>Simple job reporting and progress management</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a href="/maintenance/report/" style="background:#e3f1e6;color:#18543c;text-decoration:none;padding:11px 14px;border-radius:10px;font-weight:700">Staff reporting link ↗</a><button id="new">+ Report a fault</button></div></div><div class="stats"><div class="stat"><span class="sub">Total</span><strong id="total">0</strong></div><div class="stat"><span class="sub">Outstanding</span><strong id="open">0</strong></div><div class="stat"><span class="sub">Completed</span><strong id="done">0</strong></div></div><div class="tools"><input id="q" placeholder="Search jobs"><select id="filter"><option value="all">All jobs</option><option value="open">Outstanding</option><option value="done">Completed</option></select></div><div id="jobs" class="jobs"></div><section id="adminBox" class="panel" hidden style="margin-top:18px"><h2>Staff accounts</h2><form id="staffForm"><label>Name<input id="staffName" required></label><label>Email<input id="staffEmail" type="email" required></label><label>Temporary password (12+ characters)<input id="staffPassword" type="password" minlength="12" required></label><label>Role<select id="staffRole"><option value="staff">Kitchen / Reporter</option><option value="engineer">Engineer</option><option value="admin">Administrator</option></select></label><p class="sub" id="staffMsg"></p><button type="submit">Create account</button></form><div id="staffUsers" style="margin-top:15px"></div></section><div style="margin-top:18px"><button class="secondary" id="logout" hidden>Sign out</button></div></div></main><div id="dialog" class="dialog" hidden><form id="form" class="form"><h2 id="formTitle">Report a maintenance fault</h2><label id="issueLabel">Fault description<input id="issue" maxlength="250" required></label><label id="locationLabel">Location<input id="location" maxlength="80" required></label><label id="priorityLabel">Priority<select id="priority"><option>Normal</option><option>High</option><option>Urgent</option></select></label><label id="notesLabel">Notes<textarea id="notes" rows="3" maxlength="800"></textarea></label><div id="jobPhotoPanel" hidden style="margin-top:12px"><button type="button" class="secondary" id="openPhoto">View attached photo</button><p id="photoMessage" class="sub"></p><img id="jobPhoto" alt="Photo supplied with maintenance report" style="display:none;width:100%;max-height:400px;object-fit:contain;border-radius:9px;margin-top:10px"></div><div class="actions"><button class="secondary" type="button" id="cancel">Cancel</button><button type="submit" id="saveJob">Add job</button></div></form></div><script>const API='https://forge-maintenance-api.gphewett.workers.dev';
 let token=localStorage.getItem('forge-maintenance-token')||sessionStorage.getItem('forge-maintenance-token')||'',me=null,jobs=[];
@@ -23,10 +50,10 @@ function render(){
 const q=$('q').value.toLowerCase(),f=$('filter').value;
 $('total').textContent=jobs.length;$('open').textContent=jobs.filter(j=>j.status!=='completed').length;$('done').textContent=jobs.filter(j=>j.status==='completed').length;
 const rows=jobs.filter(j=>(f==='all'||(f==='done'?j.status==='completed':j.status!=='completed'))&&[j.issue,j.location,j.notes,j.job_number,j.assigned_to,j.completion_notes].join(' ').toLowerCase().includes(q));
-const heading=['Job ID','Job / Issue','Location','Priority','Status','Assigned','Notes','Action'];
-const widths=['80px','32%','14%','80px','112px','12%','18%','75px'];
+const heading=['Job ID','Job / Issue','Update','Location','Priority','Status','Assigned','Notes'];
+const widths=['80px','32%','76px','14%','80px','112px','12%','18%'];
 let table='<table class="job-table"><colgroup>'+widths.map(w=>'<col style="width:'+w+'">').join('')+'</colgroup><thead><tr>'+heading.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>';
-table+=rows.map(j=>'<tr><td>'+esc(j.job_number||'')+'</td><td class="issue">'+esc(j.issue||'')+'</td><td>'+esc(j.location||'')+'</td><td><span class="tag '+esc(j.priority||'normal')+'">'+esc(j.priority||'normal')+'</span></td><td>'+esc((j.status||'new').replaceAll('_',' '))+'</td><td>'+esc(j.assigned_to||'—')+'</td><td class="notes" title="'+esc(j.completion_notes||j.notes||'')+'">'+esc(j.completion_notes||j.notes||'—')+'</td><td>'+(['admin','engineer'].includes(me.role)?'<button class="secondary" data-id="'+esc(j.id)+'">Update</button>':'—')+'</td></tr>').join('');
+table+=rows.map(j=>'<tr><td>'+esc(j.job_number||'')+'</td><td class="issue">'+esc(j.issue||'')+'</td><td>'+(['admin','engineer'].includes(me.role)?'<button class="secondary" data-id="'+esc(j.id)+'">Update</button>':'—')+'</td><td>'+esc(j.location||'')+'</td><td><span class="tag '+esc(j.priority||'normal')+'">'+esc(j.priority||'normal')+'</span></td><td>'+esc((j.status||'new').replaceAll('_',' '))+'</td><td>'+esc(j.assigned_to||'—')+'</td><td class="notes" title="'+esc(j.completion_notes||j.notes||'')+'">'+esc(j.completion_notes||j.notes||'—')+'</td></tr>').join('');
 table+=rows.length?'':'<tr><td colspan="8">No jobs match.</td></tr>';
 $('jobs').innerHTML=table+'</tbody></table>';
 document.querySelectorAll('[data-id]').forEach(el=>el.onclick=()=>editJob(el.dataset.id));
