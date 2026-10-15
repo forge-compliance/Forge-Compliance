@@ -112,6 +112,7 @@ $('jobs').innerHTML=table+'</tbody></table>';
 document.querySelectorAll('[data-id]').forEach(el=>el.onclick=()=>editJob(el.dataset.id));document.querySelectorAll('[data-open]').forEach(el=>el.onclick=()=>editJob(el.dataset.open));
 }
 let editing=null;
+function jobDate(value){if(!value)return 'Not recorded';const parsed=new Date(String(value).includes('T')?value:String(value).replace(' ','T')+'Z');return Number.isNaN(parsed.getTime())?String(value):parsed.toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'});}
 function editJob(id){
  editing=jobs.find(j=>j.id===id);if(!editing)return;
  $('form').reset();$('formTitle').textContent='Update job · '+(editing.job_number||'');
@@ -119,7 +120,7 @@ function editJob(id){
  $('issueLabel').hidden=false;$('locationLabel').hidden=false;$('priorityLabel').hidden=false;
  $('issue').value=editing.issue||'';$('location').value=editing.location||'';$('priority').value=(editing.priority||'normal').toLowerCase();
  $('notesLabel').firstChild.textContent='Completion / work notes';
- $('notes').value=editing.completion_notes||'';const manager=['admin','engineer'].includes(me.role);$('jobReadOnlyInfo').hidden=false;$('jobReadOnlyInfo').innerHTML='<strong>Reported notes</strong><p>'+esc(editing.notes||'No notes supplied')+'</p><strong>Assigned to</strong><p>'+esc(editing.assigned_to||'Unassigned')+'</p><strong>Current status</strong><p>'+esc((editing.status||'new').replaceAll('_',' '))+'</p>';$('saveJob').hidden=!manager;$('notes').readOnly=!manager;
+ $('notes').value=editing.completion_notes||'';const manager=['admin','engineer'].includes(me.role);$('jobReadOnlyInfo').hidden=false;$('jobReadOnlyInfo').innerHTML='<strong>Reported on</strong><p>'+esc(jobDate(editing.reported_at))+'</p>'+(editing.completed_at?'<strong>Completed on</strong><p>'+esc(jobDate(editing.completed_at))+'</p>':'')+'<strong>Reported notes</strong><p>'+esc(editing.notes||'No notes supplied')+'</p><strong>Assigned to</strong><p>'+esc(editing.assigned_to||'Unassigned')+'</p><strong>Current status</strong><p>'+esc((editing.status||'new').replaceAll('_',' '))+'</p>';$('saveJob').hidden=!manager;$('notes').readOnly=!manager;
  $('issue').readOnly=true;$('location').readOnly=true;$('priority').disabled=true;
  let label=$('statusLabel');if(!label){
  label=document.createElement('label');label.id='statusLabel';label.textContent='Job status';
