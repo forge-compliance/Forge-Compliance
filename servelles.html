@@ -81,19 +81,57 @@ const frames=scenes.map(scene=>{
   fig.append(img,h,p);gallery.appendChild(fig);return img;
 });
 let index=0;
-function seekNext(){
-  if(index>=scenes.length){video.remove();return;}
-  video.currentTime=scenes[index].time;
+const capturedFrames=[];
+function frameSignature(canvas){
+  const small=document.createElement('canvas');
+  small.width=16;small.height=9;
+  const ctx=small.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(canvas,0,0,16,9);
+  const rgba=ctx.getImageData(0,0,16,9).data;
+  const values=[];
+  for(let i=0;i<rgba.length;i+=4)values.push(Math.round((rgba[i]*.299+rgba[i+1]*.587+rgba[i+2]*.114)/12));
+  return values;
 }
-video.addEventListener('loadedmetadata',seekNext,{once:true});
+function isDuplicate(a,b){
+  let difference=0;
+  for(let i=0;i<a.length;i++)difference+=Math.abs(a[i]-b[i]);
+  return difference/a.length<1.4;
+}
+function seekNext(offset=0){
+  if(index>=scenes.length){video.remove();return;}
+  video.currentTime=Math.min(scenes[index].time+offset,Math.max(0,video.duration-.2));
+}
+video.addEventListener('loadedmetadata',()=>seekNext(),{once:true});
+let retry=0;
 video.addEventListener('seeked',()=>{
-  try{
-    const canvas=document.createElement('canvas');
-    canvas.width=960;canvas.height=Math.round(960*video.videoHeight/video.videoWidth);
-    canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
-    frames[index].src=canvas.toDataURL('image/jpeg',.83);
-  }catch(e){frames[index].alt='Preview unavailable; watch the video above';}
-  index++;seekNext();
+  // Mobile browsers may fire 'seeked' before the requested frame has been painted.
+  // Wait for the decoded video frame, rather than copying the previous scene.
+  function capture(){
+    try{
+      if(!video.videoWidth||!video.videoHeight)throw Error('No video frame');
+      const canvas=document.createElement('canvas');
+      canvas.width=960;canvas.height=Math.round(960*video.videoHeight/video.videoWidth);
+      canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
+      const signature=frameSignature(canvas);
+      if(capturedFrames.some(old=>isDuplicate(old,signature))&&retry<5&&video.currentTime+1<video.duration){
+        retry++;seekNext(retry*1.5);return;
+      }
+      // Never label the same still as a different product step.
+      if(capturedFrames.some(old=>isDuplicate(old,signature))){
+        frames[index].closest('figure').remove();
+      }else{
+        frames[index].src=canvas.toDataURL('image/jpeg',.85);
+        capturedFrames.push(signature);
+      }
+    }catch(e){frames[index].closest('figure').remove();}
+    retry=0;index++;seekNext();
+  }
+  if(typeof video.requestVideoFrameCallback==='function'){
+    video.requestVideoFrameCallback(()=>capture());
+  }else{
+    // A short post-seek render delay is needed on older mobile browsers.
+    setTimeout(capture,180);
+  }
 });
 video.addEventListener('error',()=>{gallery.querySelectorAll('figure').forEach(f=>f.remove());video.remove();});
 })();
