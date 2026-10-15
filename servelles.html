@@ -57,85 +57,18 @@ const source=document.createElement('source');source.src=url;source.type='video/
 }).catch(()=>{});
 })();
 </script></div></section>
-<section class="sv-section" id="servelles-screenshots"><div class="sv-wrap"><span class="sv-label">Inside Servelle's</span><h2>How it works, on screen</h2><p>A few frames from the Servelle's demonstration, showing the approach to guest requests and team coordination.</p><div id="sv-gallery" class="sv-cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))"></div></div></section>
-<script>
-(function(){
-const scenes=[
-{time:3.5,title:'Guest requests',caption:'Guests can make a request without chasing down a member of the team.'},
-{time:8.5,title:'The service dashboard',caption:'Staff can see incoming requests and what needs attention.'},
-{time:12,title:'Route the request',caption:'Check the request and pass it to the right department.'},
-{time:16,title:'Housekeeping at the door',caption:'Once transferred, the right team attends to the guest and completes the request.'}
-];
-const gallery=document.getElementById('sv-gallery');
-const video=document.createElement('video');
-video.src='assets/video/Servelles_Promo_No_Watermark-1.mp4';
-video.preload='auto';video.muted=true;video.playsInline=true;
-video.style.display='none';gallery.appendChild(video);
-const frames=scenes.map(scene=>{
-  const fig=document.createElement('figure');fig.className='sv-card';fig.style.margin='0';
-  const img=document.createElement('img');
-  img.alt=scene.title+" — still from the Servelle's promotional video";
-  img.classList.add('zoomable-art');img.tabIndex=0;img.title='Click to enlarge';img.style.cssText='display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:16px;background:#071a28';
-  const h=document.createElement('h3');h.textContent=scene.title;
-  const p=document.createElement('p');p.textContent=scene.caption;
-  fig.append(img,h,p);gallery.appendChild(fig);return img;
-});
-let index=0;
-const capturedFrames=[];
-function frameSignature(canvas){
-  const small=document.createElement('canvas');
-  small.width=16;small.height=9;
-  const ctx=small.getContext('2d',{willReadFrequently:true});
-  ctx.drawImage(canvas,0,0,16,9);
-  const rgba=ctx.getImageData(0,0,16,9).data;
-  const values=[];
-  for(let i=0;i<rgba.length;i+=4)values.push(Math.round((rgba[i]*.299+rgba[i+1]*.587+rgba[i+2]*.114)/12));
-  return values;
-}
-function isDuplicate(a,b){
-  let difference=0;
-  for(let i=0;i<a.length;i++)difference+=Math.abs(a[i]-b[i]);
-  return difference/a.length<1.4;
-}
-function seekNext(offset=0){
-  if(index>=scenes.length){video.remove();return;}
-  video.currentTime=Math.min(scenes[index].time+offset,Math.max(0,video.duration-.2));
-}
-video.addEventListener('loadedmetadata',()=>seekNext(),{once:true});
-let retry=0;
-video.addEventListener('seeked',()=>{
-  // Mobile browsers may fire 'seeked' before the requested frame has been painted.
-  // Wait for the decoded video frame, rather than copying the previous scene.
-  function capture(){
-    try{
-      if(!video.videoWidth||!video.videoHeight)throw Error('No video frame');
-      const canvas=document.createElement('canvas');
-      canvas.width=960;canvas.height=Math.round(960*video.videoHeight/video.videoWidth);
-      canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
-      const signature=frameSignature(canvas);
-      if(capturedFrames.some(old=>isDuplicate(old,signature))&&retry<5&&video.currentTime+1<video.duration){
-        retry++;seekNext(retry*1.5);return;
-      }
-      // Never label the same still as a different product step.
-      if(capturedFrames.some(old=>isDuplicate(old,signature))){
-        frames[index].closest('figure').remove();
-      }else{
-        frames[index].src=canvas.toDataURL('image/jpeg',.85);
-        capturedFrames.push(signature);
-      }
-    }catch(e){frames[index].closest('figure').remove();}
-    retry=0;index++;seekNext();
-  }
-  if(typeof video.requestVideoFrameCallback==='function'){
-    video.requestVideoFrameCallback(()=>capture());
-  }else{
-    // A short post-seek render delay is needed on older mobile browsers.
-    setTimeout(capture,180);
-  }
-});
-video.addEventListener('error',()=>{gallery.querySelectorAll('figure').forEach(f=>f.remove());video.remove();});
-})();
-</script>
+<section class="sv-section" id="servelles-screenshots"><div class="sv-wrap"><span class="sv-label">Inside Servelle's</span><h2>How it works, on screen</h2><p>Illustrative previews of how guest requests move through the service workflow.</p></div></section>
+<style>
+.sv-demo{aspect-ratio:16/9;background:linear-gradient(135deg,#09202d,#174c54);border:1px solid #4b7282;border-radius:10px;margin-bottom:16px;padding:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sv-demo-ui{width:100%;max-width:390px;background:#f7fbfc;color:#193044;border-radius:9px;padding:12px;box-shadow:0 8px 26px #0004;font-size:clamp(9px,1.3vw,13px)}
+.sv-demo-ui strong{color:#15354c}.sv-demo-head{display:flex;justify-content:space-between;align-items:center;background:#15384d;color:#fff;padding:9px 11px;border-radius:6px;margin:-12px -12px 10px;font-weight:800}.sv-demo-pill{background:#e4f9d6;color:#28602b;padding:4px 7px;border-radius:12px;font-size:10px;font-weight:800}.sv-demo-line{border-bottom:1px solid #dce7ea;padding:7px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}.sv-demo-btn{margin-top:9px;background:#91ee35;color:#143348;font-weight:900;padding:6px 10px;border-radius:6px;text-align:center}.sv-demo-sub{color:#587280;margin-top:5px}
+</style>
+<div class="sv-cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:22px">
+<figure class="sv-card" style="margin:0"><div class="sv-demo" role="img" aria-label="Illustrative guest request form"><div class="sv-demo-ui"><div class="sv-demo-head">Servelle's <span>Guest portal</span></div><strong>How can we help?</strong><div class="sv-demo-line">Room 204 <span>▾</span></div><div class="sv-demo-line">Extra towels <span>✓</span></div><div class="sv-demo-btn">Send request</div></div></div><h3>Guest requests</h3><p>Guests can make a request without chasing down a member of the team.</p></figure>
+<figure class="sv-card" style="margin:0"><div class="sv-demo" role="img" aria-label="Illustrative service request dashboard"><div class="sv-demo-ui"><div class="sv-demo-head">Service dashboard <span>3 requests</span></div><div class="sv-demo-line"><strong>204 · Extra towels</strong><span class="sv-demo-pill">New</span></div><div class="sv-demo-line"><strong>109 · Room service</strong><span class="sv-demo-pill">Active</span></div><div class="sv-demo-line"><strong>310 · Room temperature</strong><span class="sv-demo-pill">New</span></div></div></div><h3>The service dashboard</h3><p>Staff can see incoming requests and what needs attention.</p></figure>
+<figure class="sv-card" style="margin:0"><div class="sv-demo" role="img" aria-label="Illustrative request routing screen"><div class="sv-demo-ui"><div class="sv-demo-head">Request 204 <span>Assign</span></div><strong>Extra towels requested</strong><div class="sv-demo-sub">Choose the team responsible</div><div class="sv-demo-line">Housekeeping <span>✓</span></div><div class="sv-demo-line">Maintenance <span>○</span></div><div class="sv-demo-btn">Send to housekeeping</div></div></div><h3>Route the request</h3><p>Check the request and pass it to the right department.</p></figure>
+<figure class="sv-card" style="margin:0"><div class="sv-demo" role="img" aria-label="Illustrative housekeeping task completion screen"><div class="sv-demo-ui"><div class="sv-demo-head">Housekeeping <span>Tasks</span></div><strong>Room 204 · Extra towels</strong><div class="sv-demo-sub">Assigned to housekeeping</div><div class="sv-demo-line">Status <span class="sv-demo-pill">In progress</span></div><div class="sv-demo-btn">Mark as completed ✓</div></div></div><h3>Housekeeping at the door</h3><p>Once transferred, the right team attends to the guest and completes the request.</p></figure>
+</div>
 <section class="sv-cta"><div class="sv-wrap"><span class="sv-label">For hotels and hospitality teams</span><h2 style="color:white">Want a closer look?</h2><p>See how Servelle's could fit the way your team works.</p><a class="sv-button" href="contact.html">Discuss Servelle's →</a></div></section>
 </main><footer class="sv-footer"><a href="index.html">Forge Digital Systems</a> · <a href="forge-ccs.html">Our Systems</a> · <a href="privacy.html">Privacy</a></footer>
 <style>
