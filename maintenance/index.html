@@ -41,6 +41,48 @@ input:focus,select:focus,textarea:focus{outline:2px solid #20a69d;outline-offset
 .account-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #dde9ee;flex-wrap:wrap}.account-row button{font-size:12px}.panel form label{display:block;margin:12px 0;font-weight:600}.panel form label input{margin-top:6px}
 .job-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 10px}.job-tabs .tab{background:#e0edf3;color:#244b63;padding:15px 12px;border:2px solid #9dc4d5;border-radius:10px;font-size:15px;font-weight:800;text-align:center}.job-tabs .tab.active{background:#087d8b;color:white;border-color:#075c6e;box-shadow:0 3px 8px #074b6530}.job-tabs .tab:focus-visible{outline:3px solid #123e79;outline-offset:2px}@media(max-width:540px){.job-tabs{gap:5px}.job-tabs .tab{font-size:12px;padding:12px 5px}}.tools input{flex:1;min-width:140px}.tools select{max-width:190px}#resultCount{margin:3px 0 9px}
 .account-row .remove-user{font-size:12px;background:#fff0ef;color:#a32a25;border:1px solid #efb3b0}.account-row .remove-user:hover{background:#fbdad8}.account-row .remove-user:disabled{opacity:.35;cursor:not-allowed}
+
+/* Forge Digital Systems: dark navy + lime theme */
+:root{color:#eaf5ff;background:#06182b;color-scheme:dark}
+body{background:linear-gradient(145deg,#07192d 0%,#0b2540 60%,#081a2f 100%);min-height:100vh;color:#eaf5ff}
+header{background:#041529;border-bottom:2px solid #b7f34a}
+header strong{color:#b7f34a}header small{color:#c4d8e8}header a{color:#b7f34a!important}
+h1,h2{color:#b7f34a}p,.sub{color:#bed1e0}
+.note{background:#123451;border:1px solid #315873;color:#d9edfc}
+.stat,.panel,.jobs{background:#102c48;border:1px solid #32536e;color:#edf7ff}
+.stat strong{color:#b7f34a}.stat .sub{color:#b9cddd}
+button{background:#b7f34a;color:#09253b}
+button:hover{background:#a4de36}
+.secondary{background:#1b425f;color:#e4f6ff;border:1px solid #49708b}
+.secondary:hover{background:#275572}
+#secured .lead a{background:#1b425f!important;color:#b7f34a!important;border:1px solid #698a56}
+input,select,textarea{background:#f6fbff;color:#102e47;border:1px solid #7295ab;color-scheme:light}
+input::placeholder,textarea::placeholder{color:#688394}
+input:focus,select:focus,textarea:focus{outline:2px solid #b7f34a;outline-offset:1px}
+.panel form label,.form label{color:#d4f29d}
+.job-tabs .tab{background:#173a57;color:#d5e8f5;border:2px solid #3a617b}
+.job-tabs .tab.active{background:#b7f34a;color:#09253b;border-color:#d2ff7f;box-shadow:0 3px 10px #b7f34a2a}
+.job-tabs .tab:hover{border-color:#b7f34a}
+.job-table{color:#e3f3ff}
+.job-table th{background:#193e5c;color:#c4f77b;border-bottom:2px solid #8ab947}
+.job-table td{border-bottom:1px solid #28465f}
+.job-table tr:nth-child(even) td{background:#12314d}
+.job-table tr:nth-child(odd) td{background:#0e2945}
+.job-table tr:hover td{background:#1c4560}
+.job-table .issue{color:#f4fbff}
+.job-table .notes{color:#b9d0e0}
+.job-table button{background:#b7f34a;color:#0b2a3e;border:none}
+.job-table button:hover{background:#d1ff82}
+.tag{background:#224563;color:#d9f4ff}
+.tag.high{background:#6a4b25;color:#ffe19d}
+.tag.urgent{background:#643139;color:#ffb3bd}
+.dialog{background:#020d1dcf}
+.form{background:#102d49;color:#eaf5ff;border:1px solid #466985}
+.form h2{color:#b7f34a}
+.account-row{border-bottom:1px solid #31546c}
+.account-row .remove-user{background:#572b35;color:#ffd5d5;border:1px solid #a05b68}
+.account-row .remove-user:hover{background:#713945}
+#resultCount{color:#b9cfdd}
 </style></head><body>
 <header><div><strong>FORGE · Maintenance</strong><small>Job management prototype</small></div><a href="/" style="color:#dcf4e3">Forge homepage</a></header><main><div id="serviceNotice" class="note">Secure cloud database connection. Sign in to view and report maintenance jobs.</div><section id="loginBox" class="panel"><h2>Staff sign in</h2><form id="loginForm"><label>Email<input id="loginEmail" type="email" required autocomplete="username"></label><label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label><p id="loginErr" class="sub"></p><label style="display:flex;align-items:center;gap:8px;margin:13px 0"><input id="rememberSession" type="checkbox" style="width:18px;height:18px" checked>Keep me signed in on this device</label><button type="submit">Sign in</button></form></section><div id="secured" hidden><div class="lead"><div><h1>Maintenance dashboard</h1><p>Simple job reporting and progress management</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a href="/maintenance/report/" style="background:#e3f1e6;color:#18543c;text-decoration:none;padding:11px 14px;border-radius:10px;font-weight:700">Staff reporting link ↗</a><button id="new">+ Report a fault</button></div></div><div class="stats"><div class="stat"><span class="sub">Total</span><strong id="total">0</strong></div><div class="stat"><span class="sub">Outstanding</span><strong id="open">0</strong></div><div class="stat"><span class="sub">Completed</span><strong id="done">0</strong></div></div><div class="job-tabs" role="group" aria-label="Job views"><button type="button" class="tab active" data-view="open">Active jobs</button><button type="button" class="tab" data-view="done">Completed history</button><button type="button" class="tab" data-view="all">All jobs</button></div><div class="tools"><input id="q" placeholder="Search job number, fault, location or notes"><select id="priorityFilter"><option value="all">All priorities</option><option value="urgent">Urgent</option><option value="high">High</option><option value="normal">Normal</option></select><select id="statusFilter"><option value="all">All statuses</option><option value="new">New</option><option value="in_progress">In progress</option><option value="waiting_parts">Waiting for parts</option><option value="waiting_contractor">Waiting contractor</option><option value="completed">Completed</option></select><input id="locationFilter" placeholder="Filter by location"></div><p class="sub" id="resultCount" role="status"></p><div id="jobs" class="jobs"></div><section id="adminBox" class="panel" hidden style="margin-top:18px"><h2>Staff accounts</h2><form id="staffForm"><label>Name<input id="staffName" required></label><label>Email<input id="staffEmail" type="email" required></label><label>Temporary password (12+ characters)<input id="staffPassword" type="password" minlength="12" required></label><label>Role<select id="staffRole"><option value="staff">Kitchen / Reporter</option><option value="engineer">Engineer</option><option value="admin">Administrator</option></select></label><p class="sub" id="staffMsg"></p><button type="submit">Create account</button></form><div id="staffUsers" style="margin-top:15px"></div></section><section class="panel" style="margin-top:16px"><h2>My account</h2><p class="sub">Change your password. You will need to sign in again afterwards.</p><form id="ownPasswordForm"><label>Current password<input type="password" id="oldPassword" autocomplete="current-password" required></label><label>New password (12+ characters)<input type="password" id="ownNewPassword" autocomplete="new-password" minlength="12" required></label><p id="ownPasswordMessage" class="sub" role="status"></p><button type="submit">Change my password</button></form></section><div style="margin-top:18px"><button class="secondary" id="logout" hidden>Sign out</button></div></div></main><div id="dialog" class="dialog" hidden><form id="form" class="form"><h2 id="formTitle">Report a maintenance fault</h2><label id="issueLabel">Fault description<input id="issue" maxlength="250" required></label><label id="locationLabel">Location<input id="location" maxlength="80" required></label><label id="priorityLabel">Priority<select id="priority"><option>Normal</option><option>High</option><option>Urgent</option></select></label><label id="notesLabel">Notes<textarea id="notes" rows="3" maxlength="800"></textarea></label><div id="jobPhotoPanel" hidden style="margin-top:12px"><button type="button" class="secondary" id="openPhoto">View attached photo</button><p id="photoMessage" class="sub"></p><img id="jobPhoto" alt="Photo supplied with maintenance report" style="display:none;width:100%;max-height:400px;object-fit:contain;border-radius:9px;margin-top:10px"></div><div class="actions"><button class="secondary" type="button" id="cancel">Cancel</button><button type="submit" id="saveJob">Add job</button></div></form></div><script>const API='https://forge-maintenance-api.gphewett.workers.dev';
 let token=localStorage.getItem('forge-maintenance-token')||sessionStorage.getItem('forge-maintenance-token')||'',me=null,jobs=[];
