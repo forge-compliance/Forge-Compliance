@@ -5,3 +5,19 @@
 .about-cta{padding:3.2rem 0;background:linear-gradient(135deg,#111f2e,#07111c);color:#fff}.about-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem}.about-cta h2{font-size:clamp(2rem,4vw,3rem);margin:.3rem 0}.about-cta p{margin:0;color:#bdc9d4;max-width:720px}
 @media(max-width:900px){.about-hero-grid,.about-intro{grid-template-columns:1fr}.about-hero-image img{height:300px}.about-gallery{grid-template-columns:1fr 1fr}.about-shot:first-child{grid-column:1/-1;min-height:300px}.about-cta-inner{display:block}.about-cta .btn{margin-top:1.2rem}}
 @media(max-width:560px){.about-page .page-hero{padding:2.7rem 0}.about-page .page-hero h1{font-size:clamp(2.2rem,10vw,3.3rem)}.about-hero-image img{height:220px;border-radius:15px}.about-page .section{padding:3rem 0}.about-gallery-section{padding-bottom:3rem}.about-gallery{grid-template-columns:1fr;gap:10px}.about-shot:first-child{grid-column:auto;min-height:230px}.about-shot{min-height:190px;border-radius:14px}.about-principle{padding:15px 16px}.about-cta{padding:2.6rem 0}}
+
+/* About page contrast repair: dark cards with accessible text, including mobile. */
+.about-page .section .about-principles .about-principle {
+  background:#17384b !important;
+  border:1px solid rgba(145,238,53,.24) !important;
+  color:#f1f7fa !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.14) !important;
+}
+.about-page .section .about-principles .about-principle h3 {
+  color:#ffffff !important;
+  opacity:1 !important;
+}
+.about-page .section .about-principles .about-principle p {
+  color:#dce9ed !important;
+  opacity:1 !important;
+}
